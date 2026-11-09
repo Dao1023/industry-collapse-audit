@@ -499,6 +499,23 @@ footer{margin-top:120px;background:var(--ink);color:var(--paper);padding:56px 0 
   .table-wrap{display:block!important}
   .cards{display:none!important}
 }
+/* 散点图的移动端替代：同一份数据按象限分组列出，不需要横向滑动 */
+.q-list{display:none}
+@media (max-width:720px){
+  .scatter-scroll{display:none}
+  .swipe-hint{display:none}
+  .q-list{display:block;border-top:1px solid var(--rule)}
+  .qg{padding:16px 0 14px;border-bottom:1px solid var(--rule)}
+  .qg-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+  .qg-t{font-family:var(--serif);font-size:18px;letter-spacing:.01em}
+  .qg-n{font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+  .qg-s{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+  .qi{display:grid;grid-template-columns:9px 1fr auto;column-gap:9px;align-items:baseline;padding:7px 0}
+  .qi .dot{width:7px;height:7px;border-radius:50%;align-self:center}
+  .qi .qn{font-size:14.5px}
+  .qi .qv{font-size:11px;color:var(--muted);letter-spacing:.04em}
+  .qi .qd{grid-column:2/-1;font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.5}
+}
 </style>
 </head>
 <body>
@@ -751,6 +768,7 @@ footer{margin-top:120px;background:var(--ink);color:var(--paper);padding:56px 0 
           </svg>
         </div>
         <div class="tt" id="tt" hidden aria-hidden="true"></div>
+        <div class="q-list" id="qlist" aria-label="12 个行业的量价方向，按象限分组"></div>
       </div>
       <div class="legend" id="legend">
         <span class="lg ok"><i></i>基本正确 <b>2</b></span>
@@ -1299,6 +1317,29 @@ pts.innerHTML = DATA.reverse.map(function(x, i){
 }).join('');
 
 var tt = $('#tt');
+/* 移动端：同一份数据按象限分组，替代需要横滑的散点图 */
+var QO = [['tr','量价齐升','说它崩，基本是伪命题'],
+          ['br','量增价减','是内卷，不是崩盘'],
+          ['tl','量减价增','收缩中提价'],
+          ['bl','量价齐跌','只有这里才是真衰退']];
+var qlistEl = $('#qlist');
+if(qlistEl){
+  qlistEl.innerHTML = QO.map(function(g){
+    var items = DATA.reverse.map(function(x,i){ return {x:x,i:i}; })
+      .filter(function(o){ return quadOf(o.x.direction) === g[0]; });
+    if(!items.length) return '';
+    return '<div class="qg"><div class="qg-h"><span class="qg-t">' + g[1] + '</span>' +
+      '<span class="qg-n">' + items.length + ' / 12</span></div>' +
+      '<div class="qg-s">' + g[2] + '</div>' +
+      items.map(function(o){
+        var c = R_COLOR[o.x.verdict] || '#1A1815';
+        return '<div class="qi"><span class="dot" style="background:' + c + '"></span>' +
+          '<span class="qn">' + esc(LBL[o.x.industry] || o.x.industry) + '</span>' +
+          '<span class="qv">' + esc(o.x.verdict) + '</span>' +
+          '<span class="qd">' + esc(o.x.direction) + '</span></div>';
+      }).join('') + '</div>';
+  }).join('');
+}
 var activeRev = DATA.reverse.findIndex(function(x){ return x.industry === '宠物'; });
 if(activeRev < 0) activeRev = 0;
 
