@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://img.shields.io/badge/%E8%AF%AD%E6%96%99-85%20%E6%9D%A1%E6%9C%89%E6%95%88%E5%9B%9E%E7%AD%94-1A1815" alt=""> <img src="https://img.shields.io/badge/%E8%A1%8C%E4%B8%9A-88%20%E4%B8%AA-1A1815" alt=""> <img src="https://img.shields.io/badge/%E6%A0%B8%E9%AA%8C-34%20%E4%B8%AA%E6%95%B0%E5%AD%97-B8402A" alt=""> <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-2C6E63" alt="">
+
 # 悄悄崩盘的行业
 
 **一份 88 个行业的可验证性审计**
@@ -7,6 +9,8 @@
 知乎 120 条回答 · 85 条有效 · 88 个行业 · 34 个数字核验 · 12 个行业反向验证
 
 [**▶ 在线阅读（GitHub Pages）**](https://dao1023.github.io/industry-collapse-audit/)
+
+<a href="https://dao1023.github.io/industry-collapse-audit/"><img src="images/hero.png" alt="悄悄崩盘的行业 · 首屏" width="900"></a>
 
 </div>
 
@@ -48,6 +52,8 @@
 | 供给出清 | 17 | 门店、机构、从业者在退出 | 往往是效率提升 |
 | 结构转移 | 15 | 需求换了载体 | 根本不用救 |
 
+<img src="images/clusters.png" alt="12 个簇的行业分布" width="900">
+
 **② 34 个数字里，只有 1 个完全吻合**
 
 17 证实 / 9 部分证实 / **2 证伪** / 6 无法核实。比造假更常见的是两类错误：**归属错位**（中铁的 -5.76% 被安到中建头上）与**伪指标**（驾校"产能利用率 28.6%"——驾培行业根本没有这个统计科目）。
@@ -60,6 +66,8 @@
 | 部分正确 | 4 | 白酒、旅游、电影、考研 |
 | 夸大 | 5 | 二手车、汽车、餐饮、电商、保险 |
 | **完全说反** | 1 | **宠物** |
+
+<img src="images/quadrant.png" alt="12 个行业的量价 2×2 象限" width="900">
 
 最讽刺的一条：答主说"宠物行业悄悄崩盘"，证据是"犬猫数量增速降到 1.8%"——1.8% 是**正增长**。实际犬猫 1.26 亿只（+1.8%）、市场规模 3126 亿（+4.1%）、单只消费 2481 元（+2.3%），量价齐升。
 
