@@ -1,0 +1,1719 @@
+[
+ {
+  "industry": "婚庆",
+  "cluster": "A 婚育人口链",
+  "n_answers": 8,
+  "n_records": 8,
+  "votes": 635,
+  "sev": {
+   "崩盘": 5,
+   "明显收缩": 3
+  },
+  "ev": {
+   "数据": 3,
+   "纯观点": 2,
+   "个案/见闻": 3
+  },
+  "has_data": true,
+  "top_author": "宏桑",
+  "top_votes": 104,
+  "top_claim": "结婚人数12年腰斩叠加极简婚礼，头部品牌批量死亡",
+  "top_quote": "去年结婚的人变多了，但婚庆还是在批量死亡",
+  "tier": "A"
+ },
+ {
+  "industry": "高等教育",
+  "cluster": "B 教育",
+  "n_answers": 5,
+  "n_records": 5,
+  "votes": 3580,
+  "sev": {
+   "严重衰退": 2,
+   "崩盘": 1,
+   "明显收缩": 1,
+   "局部承压": 1
+  },
+  "ev": {
+   "纯观点": 4,
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "呼兰遇麦",
+  "top_votes": 4,
+  "top_claim": "生育率低致生源不足，老师断言大专迟早倒闭裁人",
+  "top_quote": "因为生育率太低了 迟早倒闭裁人",
+  "tier": "B"
+ },
+ {
+  "industry": "婚纱摄影",
+  "cluster": "A 婚育人口链",
+  "n_answers": 5,
+  "n_records": 5,
+  "votes": 154,
+  "sev": {
+   "崩盘": 3,
+   "明显收缩": 2
+  },
+  "ev": {
+   "数据": 2,
+   "纯观点": 2,
+   "个案/见闻": 1
+  },
+  "has_data": true,
+  "top_author": "无边的界",
+  "top_votes": 97,
+  "top_claim": "结婚对数腰斩，头部铂爵旅拍爆雷关店、员工讨薪",
+  "top_quote": "2025年夏天爆雷，门店陆续关停",
+  "tier": "A"
+ },
+ {
+  "industry": "托育/幼儿园",
+  "cluster": "A 婚育人口链",
+  "n_answers": 3,
+  "n_records": 3,
+  "votes": 501,
+  "sev": {
+   "严重衰退": 1,
+   "崩盘": 2
+  },
+  "ev": {
+   "个案/见闻": 1,
+   "纯观点": 1,
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "无边的界",
+  "top_votes": 97,
+  "top_claim": "2023年幼儿园减少1.48万所，在园幼儿少534万",
+  "top_quote": "2023年一年，全国幼儿园减少14808所",
+  "tier": "B"
+ },
+ {
+  "industry": "月子中心",
+  "cluster": "A 婚育人口链",
+  "n_answers": 3,
+  "n_records": 3,
+  "votes": 140,
+  "sev": {
+   "严重衰退": 2,
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 2,
+   "纯观点": 1
+  },
+  "has_data": true,
+  "top_author": "无边的界",
+  "top_votes": 97,
+  "top_claim": "出生人口下滑，月子中心隔一年才感到寒意",
+  "top_quote": "孩子少了，最先接到信号的是母婴店和月子中心",
+  "tier": "B"
+ },
+ {
+  "industry": "民办学校",
+  "cluster": "B 教育",
+  "n_answers": 3,
+  "n_records": 3,
+  "votes": 107,
+  "sev": {
+   "崩盘": 3
+  },
+  "ev": {
+   "行业经验": 1,
+   "个案/见闻": 1,
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "BIU",
+  "top_votes": 106,
+  "top_claim": "综合高中愿读尽读且学费仅千元，抢走大部分生源",
+  "top_quote": "基本已经确定要崩盘了",
+  "tier": "B"
+ },
+ {
+  "industry": "留学中介",
+  "cluster": "B 教育",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 3751,
+  "sev": {
+   "崩盘": 1,
+   "明显收缩": 1
+  },
+  "ev": {
+   "纯观点": 1,
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "冰雪结界",
+  "top_votes": 362,
+  "top_claim": "获客成本上升、决策周期变长，信息透明与线上工具挤压",
+  "top_quote": "部分留学中介和语言培训机构面临获客成本上升",
+  "tier": "B"
+ },
+ {
+  "industry": "母婴",
+  "cluster": "A 婚育人口链",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 448,
+  "sev": {
+   "崩盘": 1,
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1,
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "无边的界",
+  "top_votes": 97,
+  "top_claim": "出生人口下滑，母婴店需求随之收缩",
+  "top_quote": "孩子少了，最先接到信号的是母婴店和月子中心",
+  "tier": "B"
+ },
+ {
+  "industry": "棋类培训",
+  "cluster": "B 教育",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 403,
+  "sev": {
+   "崩盘": 1,
+   "明显收缩": 1
+  },
+  "ev": {
+   "行业经验": 1,
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "启智卷笔刀",
+  "top_votes": 41,
+  "top_claim": "连锁机构收缩退场，信任崩塌，行业整体进入崩塌期",
+  "top_quote": "见证了疫情后整个围棋教育市场的崩塌",
+  "tier": "C"
+ },
+ {
+  "industry": "商场/商业地产",
+  "cluster": "C 地产/基建后周期",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 384,
+  "sev": {
+   "明显收缩": 1,
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 2
+  },
+  "has_data": false,
+  "top_author": "游侠阿钉",
+  "top_votes": 22,
+  "top_claim": "商场与人口比例远超发达国家，客流被网购和连锁分流，年轻人不再逛",
+  "top_quote": "年轻人已经不转商场了，商场已经成为过时的情况",
+  "tier": "C"
+ },
+ {
+  "industry": "家装",
+  "cluster": "C 地产/基建后周期",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 362,
+  "sev": {
+   "局部承压": 1,
+   "明显收缩": 1
+  },
+  "ev": {
+   "个案/见闻": 2
+  },
+  "has_data": false,
+  "top_author": "小看山StVDdirW",
+  "top_votes": 0,
+  "top_claim": "板材销售额大幅下滑，拿货的全屋定制品牌接连倒闭",
+  "top_quote": "现在家装不好做，板材销售额比前些年少了好多",
+  "tier": "C"
+ },
+ {
+  "industry": "建筑工程承包",
+  "cluster": "C 地产/基建后周期",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 164,
+  "sev": {
+   "严重衰退": 1,
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1,
+   "行业经验": 1
+  },
+  "has_data": true,
+  "top_author": "一城",
+  "top_votes": 154,
+  "top_claim": "央国企营收利润双降、裁员设人才池，民企垫资被欠款拖死",
+  "top_quote": "建筑业的垮台央国企是重灾区",
+  "tier": "B"
+ },
+ {
+  "industry": "公交",
+  "cluster": "D 财政/体制",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 152,
+  "sev": {
+   "严重衰退": 2
+  },
+  "ev": {
+   "个案/见闻": 1,
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "逃离更有希望",
+  "top_votes": 55,
+  "top_claim": "财政只给换车钱，收入不够发工资，贷款发薪",
+  "top_quote": "公交车行业在西安这样的城市也快崩了",
+  "tier": "C"
+ },
+ {
+  "industry": "服装零售",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 141,
+  "sev": {
+   "严重衰退": 1,
+   "明显收缩": 1
+  },
+  "ev": {
+   "纯观点": 1,
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "挪威的森林",
+  "top_votes": 10,
+  "top_claim": "商场人流只剩餐饮和儿童业态，服装店店员多于顾客",
+  "top_quote": "服装店，只要进去，很多时候店员比客人多",
+  "tier": "C"
+ },
+ {
+  "industry": "烟酒零售",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 125,
+  "sev": {
+   "严重衰退": 2
+  },
+  "ev": {
+   "个案/见闻": 2
+  },
+  "has_data": false,
+  "top_author": "恰如其分",
+  "top_votes": 68,
+  "top_claim": "消费力下降，高档烟滞销、日营业额不破百，个体店利润被压缩",
+  "top_quote": "每天的营业额基本都不破百的，不论是烟、酒还是饮料，都卖不动",
+  "tier": "C"
+ },
+ {
+  "industry": "烟草",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 105,
+  "sev": {
+   "明显收缩": 2
+  },
+  "ev": {
+   "纯观点": 2
+  },
+  "has_data": false,
+  "top_author": "飞翔的翅膀",
+  "top_votes": 103,
+  "top_claim": "人口下降、老龄化、年轻人消费习惯改变致需求萎缩",
+  "top_quote": "烟草，人口在下降，老龄化，年轻人的消费习惯在改变",
+  "tier": "C"
+ },
+ {
+  "industry": "钻戒",
+  "cluster": "A 婚育人口链",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 99,
+  "sev": {
+   "严重衰退": 2
+  },
+  "ev": {
+   "数据": 1,
+   "纯观点": 1
+  },
+  "has_data": true,
+  "top_author": "外行观察",
+  "top_votes": 2,
+  "top_claim": "求婚钻戒需求塌陷，营收三年缩至不足三分之一，一年净关店155家",
+  "top_quote": "三年时间，营收只剩不到三分之一，利润掉了九成六",
+  "tier": "B"
+ },
+ {
+  "industry": "传统IT/软件",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 95,
+  "sev": {
+   "崩盘": 1,
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 2
+  },
+  "has_data": false,
+  "top_author": "arvinNing",
+  "top_votes": 94,
+  "top_claim": "AI替代从业者、产品价值缩水、总需求下降",
+  "top_quote": "传统 IT，互联网，软件，都已经悄悄崩盘",
+  "tier": "C"
+ },
+ {
+  "industry": "兴趣教培",
+  "cluster": "B 教育",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 88,
+  "sev": {
+   "明显收缩": 1,
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 2
+  },
+  "has_data": false,
+  "top_author": "纪元",
+  "top_votes": 88,
+  "top_claim": "AI一对一压低人工成本，靠低价获客的中小机构悄然关门",
+  "top_quote": "大量靠低价获客的中小机构悄无声息就关了门",
+  "tier": "C"
+ },
+ {
+  "industry": "可AI化知识岗",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 66,
+  "sev": {
+   "严重衰退": 1,
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1,
+   "纯观点": 1
+  },
+  "has_data": true,
+  "top_author": "文人",
+  "top_votes": 1,
+  "top_claim": "人头需求缩减叠加AI替代，入门级标准化岗位从两头被挤没",
+  "top_quote": "一整套“靠人做标准化处理”的中间层岗位",
+  "tier": "B"
+ },
+ {
+  "industry": "驾校",
+  "cluster": "G 汽车",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 56,
+  "sev": {
+   "严重衰退": 1,
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1,
+   "纯观点": 1
+  },
+  "has_data": true,
+  "top_author": "春风化雨入夏",
+  "top_votes": 17,
+  "top_claim": "适龄学车人群减少，新领证十年降43%，八成驾校不盈利",
+  "top_quote": "超八成仍不盈利，产能利用率平均仅有28.6%",
+  "tier": "B"
+ },
+ {
+  "industry": "白酒",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 46,
+  "sev": {
+   "明显收缩": 1,
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1,
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "横看秦岭",
+  "top_votes": 7,
+  "top_claim": "终端价从高位近腰斩，囤货升值逻辑反转，性价比彻底改写",
+  "top_quote": "某东售价距离巅峰期也快腰斩了",
+  "tier": "C"
+ },
+ {
+  "industry": "酒店",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 46,
+  "sev": {
+   "崩盘": 1,
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1,
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "婧婧",
+  "top_votes": 7,
+  "top_claim": "高中低档全方位严重供大于求，但新增供给仍源源不断",
+  "top_quote": "酒店行业，无论高中低档全方位的严重供大于求",
+  "tier": "C"
+ },
+ {
+  "industry": "美发",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 44,
+  "sev": {
+   "崩盘": 1,
+   "明显收缩": 1
+  },
+  "ev": {
+   "个案/见闻": 2
+  },
+  "has_data": false,
+  "top_author": "小意达的花儿",
+  "top_votes": 44,
+  "top_claim": "高价办卡模式崩塌，10-20元快剪抢客，总监套餐打折甩卖",
+  "top_quote": "一个无法做线上却自己把自己干崩了的行业",
+  "tier": "C"
+ },
+ {
+  "industry": "实体零售",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 32,
+  "sev": {
+   "严重衰退": 2
+  },
+  "ev": {
+   "行业经验": 1,
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "年月",
+  "top_votes": 15,
+  "top_claim": "前置仓低价即时配送击穿价格体系，实体店卖不上价",
+  "top_quote": "这种模式直接击穿了所有实体零售业",
+  "tier": "C"
+ },
+ {
+  "industry": "低端外贸加工",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 5,
+  "sev": {
+   "严重衰退": 1,
+   "明显收缩": 1
+  },
+  "ev": {
+   "个案/见闻": 1,
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "莱哥",
+  "top_votes": 4,
+  "top_claim": "三改一拆后家庭小作坊被迫进园区，要么拿钱退出，要么慢性死亡",
+  "top_quote": "要么搬进园区接受慢性死亡。",
+  "tier": "C"
+ },
+ {
+  "industry": "建材",
+  "cluster": "C 地产/基建后周期",
+  "n_answers": 2,
+  "n_records": 2,
+  "votes": 1,
+  "sev": {
+   "明显收缩": 2
+  },
+  "ev": {
+   "纯观点": 2
+  },
+  "has_data": false,
+  "top_author": "立人达人",
+  "top_votes": 1,
+  "top_claim": "产能过剩叠加订单缩减，利润崩塌，只能低价内卷",
+  "top_quote": "还有产能过剩的建材赛道",
+  "tier": "C"
+ },
+ {
+  "industry": "基础教育",
+  "cluster": "B 教育",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 3389,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "Thoughts Memo",
+  "top_votes": 3389,
+  "top_claim": "托育、服从训练、知识速成三职能被AI与少工时削弱",
+  "top_quote": "学校的几乎所有职能都被削弱了",
+  "tier": "D"
+ },
+ {
+  "industry": "地方事业单位/财政供养",
+  "cluster": "D 财政/体制",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 1623,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "蓝药师",
+  "top_votes": 1623,
+  "top_claim": "人口流出、财政崩盘，三线以下事业单位5年内完蛋",
+  "top_quote": "很多三线城市及以下的各类事业单位，5年以内基本就要崩盘了",
+  "tier": "D"
+ },
+ {
+  "industry": "饮料",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 482,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "粉丝卡盟",
+  "top_votes": 482,
+  "top_claim": "可乐冰红茶雪碧卖不动，核心消费人群改吃药",
+  "top_quote": "今年的可乐冰红茶雪碧根本卖不动啦",
+  "tier": "D"
+ },
+ {
+  "industry": "双截棍培训",
+  "cluster": "B 教育",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 466,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "周大侠",
+  "top_votes": 466,
+  "top_claim": "高校社团纷纷倒闭，老辈高手淡出，辉煌不再",
+  "top_quote": "双节棍的辉煌几乎迅速消失",
+  "tier": "D"
+ },
+ {
+  "industry": "钢琴培训",
+  "cluster": "B 教育",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 362,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "冰雪结界",
+  "top_votes": 362,
+  "top_claim": "琴行销售承压、招生困难、老师学生减少、二手琴难流通",
+  "top_quote": "部分琴行销售承压，培训机构招生困难",
+  "tier": "D"
+ },
+ {
+  "industry": "政务信息化",
+  "cluster": "D 财政/体制",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 362,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "冰雪结界",
+  "top_votes": 362,
+  "top_claim": "新建项目减少、审批谨慎、付款周期拉长，回款与维护预算承压",
+  "top_quote": "新建项目都减少，项目审批更加谨慎，付款周期拉长",
+  "tier": "D"
+ },
+ {
+  "industry": "房地产中介",
+  "cluster": "C 地产/基建后周期",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 362,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "冰雪结界",
+  "top_votes": 362,
+  "top_claim": "成交转弱佣金下滑，部分门店大量关闭、人员流动加大",
+  "top_quote": "部分中介门店大量关闭，行业人员流动加大",
+  "tier": "D"
+ },
+ {
+  "industry": "传统旅行社",
+  "cluster": "J 专业服务",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 362,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "冰雪结界",
+  "top_votes": 362,
+  "top_claim": "在线平台与社交媒体分流客源，标准化产品陷低价竞争",
+  "top_quote": "部分传统旅行社门店和依赖传统获客方式的经营者面临客源分流",
+  "tier": "D"
+ },
+ {
+  "industry": "平面模特",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 303,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "海群",
+  "top_votes": 303,
+  "top_claim": "电商改AI作图，童模订单被极低成本替代",
+  "top_quote": "这个行业的一角就已经开始崩塌了",
+  "tier": "D"
+ },
+ {
+  "industry": "信用卡",
+  "cluster": "H 金融",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 239,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "Zxcvbnm64",
+  "top_votes": 239,
+  "top_claim": "银行基本放弃信用卡业务，禁暴力催收后欠款收不回",
+  "top_quote": "信用卡行业已经崩了现在各大银行基本放弃信用卡业务了",
+  "tier": "D"
+ },
+ {
+  "industry": "包养",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 227,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "基本盘中盘",
+  "top_votes": 227,
+  "top_claim": "需求侧萎缩、供给侧膨胀，行业越来越卷，几年内将打价格战",
+  "top_quote": "体制内更是在严打，需求侧萎缩。",
+  "tier": "D"
+ },
+ {
+  "industry": "中专",
+  "cluster": "B 教育",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 208,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "乌啦啦啦呵呵",
+  "top_votes": 208,
+  "top_claim": "作者所在地的中专学校这两年陆续被拆得差不多了",
+  "top_quote": "直接崩到我这地方的中专学校基本上这两年全都陆续给拆差不多了",
+  "tier": "D"
+ },
+ {
+  "industry": "售电",
+  "cluster": "D 财政/体制",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 150,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "量子游荡",
+  "top_votes": 150,
+  "top_claim": "售电公司大面积亏损退市，广西广东亏损面过半",
+  "top_quote": "2025年，超3200家售电公司推出市场，退市率接近60%",
+  "tier": "D"
+ },
+ {
+  "industry": "画师",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 97,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "麻辣星野",
+  "top_votes": 97,
+  "top_claim": "绘画AI一学就会，画师是最快被淘汰的一批，却仍自称不会崩",
+  "top_quote": "他们明明是被最快淘汰的那一批",
+  "tier": "D"
+ },
+ {
+  "industry": "程序员",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 97,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "麻辣星野",
+  "top_votes": 97,
+  "top_claim": "大公司不再招程序员、维护交由AI解决，程序员是最慢被淘汰但同样会崩",
+  "top_quote": "他们是被最慢淘汰的那一批",
+  "tier": "D"
+ },
+ {
+  "industry": "二手车",
+  "cluster": "G 汽车",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 93,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "二手车销售的一生",
+  "top_votes": 93,
+  "top_claim": "缺国标约束，调表车事故车同价竞争，正规车商被成本和劣币挤死",
+  "top_quote": "二手车行业崩盘了",
+  "tier": "D"
+ },
+ {
+  "industry": "汽车",
+  "cluster": "G 汽车",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 92,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "老夫甚平",
+  "top_votes": 92,
+  "top_claim": "内卷降价降质、赔本卖车，销量靠堆新车，车企整合重组在即",
+  "top_quote": "实际是内卷到死，各种降本增笑降质",
+  "tier": "D"
+ },
+ {
+  "industry": "娱乐造星",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 89,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "杜木头",
+  "top_votes": 89,
+  "top_claim": "影视寒冬、营销预算削减，明星高定与置装费大幅缩水",
+  "top_quote": "娱乐与时尚包装行业，现在资金链正在悄悄崩盘",
+  "tier": "D"
+ },
+ {
+  "industry": "民营骨科医院",
+  "cluster": "Z 医疗",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 89,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "杜木头",
+  "top_votes": 89,
+  "top_claim": "与造星业同逻辑，靠信息差和高溢价，潮水退去即裸泳",
+  "top_quote": "这和民营骨科医院、口腔诊所、4S店的崩盘，逻辑是一模一样的",
+  "tier": "D"
+ },
+ {
+  "industry": "民营口腔/医美",
+  "cluster": "Z 医疗",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 89,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "杜木头",
+  "top_votes": 89,
+  "top_claim": "集采压价、价格透明，靠暴利支撑的机构失去造血能力",
+  "top_quote": "集采一压，价格一透明，那些靠暴利支撑的机构瞬间失去造血能力",
+  "tier": "D"
+ },
+ {
+  "industry": "豪华车4S店",
+  "cluster": "G 汽车",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 89,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "杜木头",
+  "top_votes": 89,
+  "top_claim": "消费降级叠加电车价格战，加价与金融手续费模式失效",
+  "top_quote": "传统渠道直接被倒贴卖车逼入死角",
+  "tier": "D"
+ },
+ {
+  "industry": "数码集合店",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 88,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "纪元",
+  "top_votes": 88,
+  "top_claim": "存储芯片成本暴涨叠加线上比价，线下门店利润被挤没",
+  "top_quote": "不少店悄咪咪就撤了柜",
+  "tier": "D"
+ },
+ {
+  "industry": "新车路试",
+  "cluster": "G 汽车",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 82,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "蒲润思楷",
+  "top_votes": 82,
+  "top_claim": "加拿大车企改用AI仿真路试，实车路试需求被直接替代",
+  "top_quote": "不用上路直接ai路试",
+  "tier": "D"
+ },
+ {
+  "industry": "集邮",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 68,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "逛山子",
+  "top_votes": 68,
+  "top_claim": "玩家从两三千万萎缩至三百万，在册仅112万",
+  "top_quote": "2300万（甚至3000万）玩家。现在最多300万。",
+  "tier": "D"
+ },
+ {
+  "industry": "体育分析咨询",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 59,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "轩亭山",
+  "top_votes": 59,
+  "top_claim": "比赛录像喂给AI即可输出对手优劣与战术建议，替代付费教练分析",
+  "top_quote": "体育顾问/分析咨询行业，快被AI干崩盘了",
+  "tier": "D"
+ },
+ {
+  "industry": "广告策划",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 57,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "神佑",
+  "top_votes": 57,
+  "top_claim": "广告业从人力密集型转为AI化，人力需求塌缩",
+  "top_quote": "广告业，策划业过去是人力密集型的 现在是AI化的",
+  "tier": "D"
+ },
+ {
+  "industry": "知乎",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 55,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "网友",
+  "top_votes": 55,
+  "top_claim": "股价暴跌、股民论坛无人讨论，一两年内或退市",
+  "top_quote": "股价跌到连股民论坛都死水化了",
+  "tier": "D"
+ },
+ {
+  "industry": "传统行业",
+  "cluster": "K 泛化判断",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 52,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "四夕",
+  "top_votes": 52,
+  "top_claim": "作者断言能接触到的所有传统行业都已崩盘",
+  "top_quote": "你能接触到的所有传统行业",
+  "tier": "D"
+ },
+ {
+  "industry": "加密货币",
+  "cluster": "H 金融",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 44,
+  "sev": {
+   "局部承压": 1
+  },
+  "ev": {
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "战狼",
+  "top_votes": 44,
+  "top_claim": "全行业总市值还不到英伟达一家公司市值的一半，规模已明显缩水",
+  "top_quote": "全世界整个加密货币的总市值，还没英伟达市值的一半高。",
+  "tier": "D"
+ },
+ {
+  "industry": "中小学教师",
+  "cluster": "A 婚育人口链",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 42,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "财经咨询",
+  "top_votes": 42,
+  "top_claim": "被作者列为已崩盘行业，未展开具体机制",
+  "top_quote": "育儿幼师小学老师",
+  "tier": "D"
+ },
+ {
+  "industry": "奢侈消费",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 26,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "牛南佛",
+  "top_votes": 26,
+  "top_claim": "非必需品消费全面萎缩，只有必需品消费能活下来",
+  "top_quote": "只有必需品消费能够活下来",
+  "tier": "D"
+ },
+ {
+  "industry": "非必需消费",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 26,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "牛南佛",
+  "top_votes": 26,
+  "top_claim": "商K、按摩、餐馆等非必需服务消费被判定难以存活，仅必需品消费留存",
+  "top_quote": "所有不是必需品的消费，比如商k，按摩，餐馆。",
+  "tier": "D"
+ },
+ {
+  "industry": "早期AI应用",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 22,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "睡眠蚁",
+  "top_votes": 22,
+  "top_claim": "扣子烧钱见底并入豆包，画布式工作流被自然语言取代",
+  "top_quote": "烧了10个亿烧不动了，产品线并入豆包",
+  "tier": "D"
+ },
+ {
+  "industry": "消防维保",
+  "cluster": "D 财政/体制",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 17,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "Dellavedova",
+  "top_votes": 17,
+  "top_claim": "资质放开后公司暴增、压价到极低，改造升级收入归零致倒闭",
+  "top_quote": "大量的维保公司倒闭",
+  "tier": "D"
+ },
+ {
+  "industry": "非体力行业",
+  "cluster": "K 泛化判断",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 16,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "momo",
+  "top_votes": 16,
+  "top_claim": "AI已能生成遗照等，除纯体力劳动外多数行业都被降维打击",
+  "top_quote": "除了纯体力工作，剩下的大多数行业都在降维打击了",
+  "tier": "D"
+ },
+ {
+  "industry": "宠物",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 14,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "知识的力量",
+  "top_votes": 14,
+  "top_claim": "上市公司利润集体暴跌，犬猫数量增速降至1.8%",
+  "top_quote": "宠物行业悄悄崩盘",
+  "tier": "D"
+ },
+ {
+  "industry": "律师",
+  "cluster": "J 专业服务",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 13,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "中纬度居民",
+  "top_votes": 13,
+  "top_claim": "仅凭个人感觉断言律师业已崩盘，未给依据",
+  "top_quote": "我感觉律师行业正在（已经）悄悄崩盘",
+  "tier": "D"
+ },
+ {
+  "industry": "消杀",
+  "cluster": "J 专业服务",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 12,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "求闲",
+  "top_votes": 12,
+  "top_claim": "口罩后从业者暴增，内卷到新入行没机会",
+  "top_quote": "短短几年就内卷到根本没机会了",
+  "tier": "D"
+ },
+ {
+  "industry": "银行客户经理",
+  "cluster": "H 金融",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 10,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "自然选择号",
+  "top_votes": 10,
+  "top_claim": "经营贷放出即成坏账，客户经理从抢客户变成高危岗位",
+  "top_quote": "客户经理这个职业也崩盘了",
+  "tier": "D"
+ },
+ {
+  "industry": "公共部门咨询",
+  "cluster": "D 财政/体制",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 9,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "麋鹿裤",
+  "top_votes": 9,
+  "top_claim": "仅一行点名该业务，正文无任何展开或依据",
+  "top_quote": "对公共部门的咨询业务",
+  "tier": "D"
+ },
+ {
+  "industry": "造船",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 9,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "粉粉小红豹",
+  "top_votes": 9,
+  "top_claim": "仅点名造船并预言崩盘，未给出任何依据",
+  "top_quote": "造船！这篇回答放这，等着瞧。",
+  "tier": "D"
+ },
+ {
+  "industry": "ATM存取款机",
+  "cluster": "H 金融",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 6,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "yudl",
+  "top_votes": 6,
+  "top_claim": "移动支付普及后现金使用骤减，ATM撤机、银行网点收缩，行业需求端塌陷",
+  "top_quote": "支付宝推广以后，用现金的少了，别说ATM了好多银行网点都撤了。",
+  "tier": "D"
+ },
+ {
+  "industry": "大型商超",
+  "cluster": "C 地产/基建后周期",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 5,
+  "sev": {
+   "局部承压": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "二民",
+  "top_votes": 5,
+  "top_claim": "性价比竞争下大型商超与家庭超市生存困难",
+  "top_quote": "讲情怀没用，要讲性价比",
+  "tier": "D"
+ },
+ {
+  "industry": "餐饮",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 5,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "二民",
+  "top_votes": 5,
+  "top_claim": "小吃店和大酒店都面临生存危机，平台挤压",
+  "top_quote": "小吃店和大酒店都面临着生存危机",
+  "tier": "D"
+ },
+ {
+  "industry": "小商小贩",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 5,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "二民",
+  "top_votes": 5,
+  "top_claim": "各类小商小贩被互联网和大型生鲜超市碾压",
+  "top_quote": "各种各样的都面临着生存危机",
+  "tier": "D"
+ },
+ {
+  "industry": "早餐店",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 5,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "二民",
+  "top_votes": 5,
+  "top_claim": "人口老龄化，早餐店大部分惨淡经营",
+  "top_quote": "早餐店生意大部分都在惨淡经营",
+  "tier": "D"
+ },
+ {
+  "industry": "二手相机",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 5,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "王长生",
+  "top_votes": 5,
+  "top_claim": "全画幅二手价普遍腰斩，千元以下机型超十款，镜头中崩",
+  "top_quote": "全画幅相机二手价格大崩，普遍暴跌一半或者三分之二",
+  "tier": "D"
+ },
+ {
+  "industry": "夜店",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 4,
+  "sev": {
+   "局部承压": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "云童",
+  "top_votes": 4,
+  "top_claim": "沉寂一年的旧客重新联系，反映夜店客流与生意冷清",
+  "top_quote": "昨天收到好几个一年前加微信的妹妹说想我了",
+  "tier": "D"
+ },
+ {
+  "industry": "电缆",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 2,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "阿斯顿",
+  "top_votes": 2,
+  "top_claim": "靠压榨员工内卷维持，强制12小时两班倒、缴最低社保，老板家族套现数十亿",
+  "top_quote": "电缆行业快崩盘了，现在企业对待员工就像奴隶一样",
+  "tier": "D"
+ },
+ {
+  "industry": "保险",
+  "cluster": "H 金融",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 1,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "行业经验": 1
+  },
+  "has_data": false,
+  "top_author": "我来监督沙瑞金",
+  "top_votes": 1,
+  "top_claim": "寿险基层代理人大量离职，代理公司减员，企业团险停保，全行业向下",
+  "top_quote": "寿险行业疫情后就大量基层代理人离职",
+  "tier": "D"
+ },
+ {
+  "industry": "考公考研培训",
+  "cluster": "B 教育",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 1,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "阿尘",
+  "top_votes": 1,
+  "top_claim": "报名人数创新高但付费人数减少，头部机构营收利润双降、退费难、门店关停",
+  "top_quote": "一边是报名人数创历史新高，一边是头部机构营收利润双降",
+  "tier": "D"
+ },
+ {
+  "industry": "养殖业",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 1,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "鲈鱼卢卢",
+  "top_votes": 1,
+  "top_claim": "螃蟹价从十年前140元跌到40元，肉鸡跌到5元一斤，价格体系塌陷",
+  "top_quote": "下一个蹦飞的就是养殖业和种植业",
+  "tier": "D"
+ },
+ {
+  "industry": "种植业",
+  "cluster": "I 制造/外贸/农业",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 1,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "鲈鱼卢卢",
+  "top_votes": 1,
+  "top_claim": "菜价低到烂根喷色仍上市，大白菜6毛一斤，种菜挣不到钱",
+  "top_quote": "下一个蹦飞的就是养殖业和种植业",
+  "tier": "D"
+ },
+ {
+  "industry": "AI算力中心",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "科工之箭",
+  "top_votes": 0,
+  "top_claim": "全球算力中心全部巨亏，收入不够维护费，靠融资烧钱，泡沫将破",
+  "top_quote": "全世界的AI算力中心、AI大型软件公司，有一个算一个，全部巨额亏损",
+  "tier": "D"
+ },
+ {
+  "industry": "AI软件公司",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "科工之箭",
+  "top_votes": 0,
+  "top_claim": "大型AI软件公司全部巨额亏损、资不抵债，融资断掉就会倒闭",
+  "top_quote": "有一个算一个，全部巨额亏损，连成本都收不回来",
+  "tier": "D"
+ },
+ {
+  "industry": "编制教师",
+  "cluster": "D 财政/体制",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "局部承压": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "烂泥",
+  "top_votes": 0,
+  "top_claim": "仅点名该群体正在崩盘，未展开说明具体表现或机制",
+  "top_quote": "事业单位编制的教师",
+  "tier": "D"
+ },
+ {
+  "industry": "电商",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "局部承压": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "顶风聊三丈",
+  "top_votes": 0,
+  "top_claim": "开网店引流维护成本已不低于实体店，十进九亏，价格优势消失",
+  "top_quote": "电商一般人十个进九个凉的悄无声息",
+  "tier": "D"
+ },
+ {
+  "industry": "大型玩具",
+  "cluster": "F 传统零售/线下消费",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "严重衰退": 1
+  },
+  "ev": {
+   "个案/见闻": 1
+  },
+  "has_data": false,
+  "top_author": "小看山StVDdirW",
+  "top_votes": 0,
+  "top_claim": "幼儿园与地产客户萎缩、垫资收不回，玩具厂成批倒闭，老板成老赖",
+  "top_quote": "玩具厂欠钱不还，纷纷倒闭",
+  "tier": "D"
+ },
+ {
+  "industry": "贷款中介",
+  "cluster": "H 金融",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "崩盘": 1
+  },
+  "ev": {
+   "数据": 1
+  },
+  "has_data": true,
+  "top_author": "淡天说地",
+  "top_votes": 0,
+  "top_claim": "月放款从1亿跌到3000万，银行切割合作，从业者大批转行送外卖",
+  "top_quote": "现在每月只有3000万左右，腰斩后再腰斩",
+  "tier": "D"
+ },
+ {
+  "industry": "真人影视",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "局部承压": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "靠谱的老贺",
+  "top_votes": 0,
+  "top_claim": "AI视频在表演与场景上形成替代，真人剧集电影面临全面洗牌",
+  "top_quote": "很快就会全面受到AI视频冲击，迎来行业洗牌",
+  "tier": "D"
+ },
+ {
+  "industry": "图文广告",
+  "cluster": "E AI 冲击白领",
+  "n_answers": 1,
+  "n_records": 1,
+  "votes": 0,
+  "sev": {
+   "明显收缩": 1
+  },
+  "ev": {
+   "纯观点": 1
+  },
+  "has_data": false,
+  "top_author": "空闲人",
+  "top_votes": 0,
+  "top_claim": "线上宣传与AI作图冲击，宣传单、展板订单变少，利润极薄",
+  "top_quote": "宣传单、展板订单变少，利润薄到可怜",
+  "tier": "D"
+ }
+]

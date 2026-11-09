@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>悄悄崩盘的行业 · 一份 88 个行业的可验证性审计</title>
+<meta name="description" content="对知乎 120 条“行业崩盘”回答的统计、数字核验与可验证性审计。">
+<style>
+:root{
+  --paper:#F6F3EE;
+  --ink:#1A1815;
+  --red:#B8402A;
+  --teal:#2C6E63;
+  --gray:#8B857C;
+  --shade1:#1A1815;
+  --shade2:#4A443C;
+  --shade3:#7A7268;
+  --shade4:#B3AA9E;
+  --rule:rgba(139,133,124,.30);
+  --rule-ink:rgba(26,24,21,.16);
+  --muted:rgba(26,24,21,.68);
+  --faint:rgba(26,24,21,.44);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --sans:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);background-color:var(--paper);
+  background-image:radial-gradient(rgba(26,24,21,.035) .55px,transparent .55px);
+  background-size:4px 4px;
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+::selection{background:rgba(184,64,42,.18)}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+[hidden]{display:none!important}
+.wrap{width:min(1180px,calc(100% - 80px));margin:0 auto}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-60px;z-index:50;background:var(--ink);color:var(--paper);padding:8px 14px;font-size:13px}
+.skip:focus{top:12px}
+.num{font-variant-numeric:tabular-nums}
+
+/* masthead */
+.masthead{border-bottom:1px solid var(--ink);background:rgba(246,243,238,.86)}
+.mast{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:13px 0 11px}
+.brand{font-family:var(--serif);font-size:17px;letter-spacing:.06em;text-decoration:none;font-weight:600}
+.brand-sub{font-family:var(--sans);font-size:9px;letter-spacing:.22em;color:var(--muted);font-weight:400;white-space:nowrap}
+.mast-right{display:flex;gap:28px;font-size:10px;letter-spacing:.13em;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{padding:58px 0 0}
+.kicker{display:flex;justify-content:space-between;gap:24px;font-size:10.5px;letter-spacing:.19em;color:var(--muted);border-top:1px solid var(--ink);padding-top:12px;text-transform:uppercase}
+h1{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(42px,11.2vw,150px);
+  line-height:.94;letter-spacing:-.012em;
+  margin:30px 0 0;white-space:nowrap;
+}
+h1 .red{color:var(--red)}
+.hero-dek-row{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px;align-items:start;margin-top:34px;padding-top:20px;border-top:1px solid var(--rule)}
+.hero-dek{font-family:var(--serif);font-size:clamp(21px,2.3vw,30px);line-height:1.4;margin:0;letter-spacing:.01em}
+.hero-abs{margin:0;font-size:14px;line-height:1.8;color:var(--muted);max-width:40ch}
+.hero-abs b{color:var(--ink);font-weight:600}
+.hero-meta{margin:24px 0 0;font-size:11.5px;letter-spacing:.045em;color:var(--muted);font-variant-numeric:tabular-nums}
+.hero-meta span+span::before{content:"·";margin:0 .55em;color:var(--gray)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.stat{padding:22px 26px 24px 0;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:0}
+.stat+.stat{padding-left:26px}
+.stat-n{font-family:var(--serif);font-size:clamp(44px,5.6vw,76px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;display:block}
+.stat-n em{font-style:normal;font-size:.44em;letter-spacing:0;vertical-align:.42em;margin-left:.06em}
+.stat-l{display:block;margin-top:12px;font-size:12.5px;line-height:1.55;color:var(--muted);max-width:22ch}
+.hero-conclusion{margin:46px 0 0;padding:0 0 0 22px;border-left:2px solid var(--ink);font-family:var(--serif);font-size:clamp(19px,2.1vw,27px);line-height:1.55;max-width:940px;letter-spacing:.01em}
+.hero-foot{display:flex;justify-content:space-between;gap:20px;margin-top:56px;padding-bottom:10px;font-size:10.5px;letter-spacing:.16em;color:var(--muted)}
+
+/* section chrome */
+section.block{padding:118px 0 0}
+.sec-head{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:22px;align-items:start;border-top:2px solid var(--ink);padding-top:18px}
+.sec-no{font-family:var(--serif);font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:6px}
+.sec-head h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);line-height:1.15;margin:0;font-weight:600;letter-spacing:-.005em}
+.sec-sub{margin:12px 0 0;font-size:14.5px;color:var(--muted);max-width:56ch}
+.sec-aside{font-size:10.5px;letter-spacing:.13em;color:var(--muted);text-align:right;padding-top:8px;line-height:1.9;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* 02 types */
+.type-bar{display:flex;height:104px;margin-top:40px;padding-top:10px;border-bottom:1px solid var(--ink);align-items:stretch}
+.seg{position:relative;flex:0 0 auto;height:94px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:0 14px 14px;transition:transform .18s ease;text-align:left;min-width:0;overflow:hidden}
+.seg+.seg{border-left:1px solid var(--paper)}
+.seg[aria-pressed="true"]{transform:translateY(-9px)}
+.seg-n{font-family:var(--serif);font-size:31px;line-height:1;font-variant-numeric:tabular-nums}
+.seg-t{font-size:12.5px;font-weight:600;margin-top:5px;letter-spacing:.02em;white-space:nowrap}
+.seg-p{font-size:10.5px;opacity:1;font-variant-numeric:tabular-nums;margin-top:1px}
+.seg.c1{background:var(--shade1);color:var(--paper)}
+.seg.c2{background:var(--shade2);color:var(--paper)}
+.seg.c3{background:var(--shade3);color:var(--paper)}
+.seg.c4{background:var(--shade4);color:var(--ink)}
+.type-notes{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:0;border-bottom:1px solid var(--rule)}
+.type-note{padding:22px 16px 24px 0;border-right:1px solid var(--rule);opacity:1;transition:color .18s ease}
+.type-note+.type-note{padding-left:16px}
+.type-note:last-child{border-right:0}
+.type-note .tn-h{color:var(--muted)}
+.type-note.is-active .tn-h{color:var(--ink)}
+.tn-h{display:flex;align-items:baseline;gap:9px;font-size:13px;font-weight:600;letter-spacing:.02em}
+.tn-h .tn-n{font-family:var(--serif);font-size:22px;font-weight:400;font-variant-numeric:tabular-nums}
+.tn-p{font-size:13px;line-height:1.7;color:var(--muted);margin:9px 0 0}
+.flow-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-top:34px}
+.flow-title{font-size:13px;letter-spacing:.04em;font-weight:600;margin:0}
+.flow-title span{color:var(--muted);font-weight:400;margin-left:.5em}
+.flow-hint{font-size:11px;color:var(--muted);letter-spacing:.06em}
+.flow{display:flex;flex-wrap:wrap;gap:8px 9px;margin-top:16px;min-height:120px;align-content:flex-start}
+.ind{display:inline-flex;align-items:baseline;gap:7px;border:1px solid var(--rule-ink);padding:5px 9px 5px 10px;font-size:13px;line-height:1.3;background:rgba(246,243,238,.4)}
+.ind-n{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* 03 clusters */
+.cluster-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,3.35fr);gap:64px;margin-top:38px;align-items:start}
+.cl-list{border-top:1px solid var(--ink)}
+.cl-row{display:grid;grid-template-columns:26px 104px minmax(0,1fr) 40px;gap:12px;align-items:center;width:100%;text-align:left;padding:10px 8px 10px 0;border-bottom:1px solid var(--rule);transition:background .15s ease}
+.cl-row:hover{background:rgba(26,24,21,.035)}
+.cl-row[aria-pressed="true"]{background:rgba(26,24,21,.065)}
+.cl-code{font-family:var(--serif);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cl-name{font-size:13.5px;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cl-track{height:15px;border-left:1px solid var(--rule);display:flex;align-items:center}
+.cl-bar{display:block;height:15px;background:var(--ink);transition:width .35s ease,background .15s ease;min-width:2px}
+.cl-row[aria-pressed="true"] .cl-bar{background:var(--red)}
+.cl-n{font-family:var(--serif);font-size:19px;text-align:right;font-variant-numeric:tabular-nums;line-height:1}
+.cluster-aside{border-top:1px solid var(--ink);padding-top:16px;position:sticky;top:24px}
+.ca-k{font-size:10px;letter-spacing:.16em;color:var(--muted);margin:0 0 10px}
+.ca-t{font-family:var(--serif);font-size:24px;line-height:1.35;margin:0 0 14px}
+.ca-p{font-size:13px;line-height:1.75;color:var(--muted);margin:0 0 16px}
+.ca-status{font-size:12px;line-height:1.7;border-top:1px solid var(--rule);padding-top:12px;min-height:58px}
+.ca-status b{font-weight:600}
+.ca-clear{margin-top:10px;font-size:11px;text-decoration:underline;text-underline-offset:3px;color:var(--muted)}
+
+/* 04 table */
+.table-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;margin-top:34px;padding:14px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.filters{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fg-label{font-size:10px;letter-spacing:.16em;color:var(--muted);margin-right:3px}
+.chip{border:1px solid transparent;padding:4px 9px;font-size:12px;line-height:1.5;letter-spacing:.01em;color:var(--muted)}
+.chip:hover{border-color:var(--rule-ink);color:var(--ink)}
+.chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);background:rgba(26,24,21,.055)}
+.chip-cluster{border-color:var(--ink);color:var(--ink);display:inline-flex;gap:8px;align-items:center}
+.chip-cluster .x{font-size:14px;line-height:1;color:var(--muted)}
+.table-count{font-size:11px;letter-spacing:.07em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.table-count b{color:var(--ink);font-weight:600}
+.table-wrap{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
+caption{text-align:left;font-size:11px;color:var(--muted);padding:8px 0 12px;letter-spacing:.04em}
+thead th{text-align:left;font-weight:400;font-size:10px;letter-spacing:.14em;color:var(--muted);border-bottom:1px solid var(--ink);padding:0;white-space:nowrap;background:var(--paper)}
+thead th .sort{display:flex;align-items:center;gap:7px;width:100%;padding:9px 10px 9px 0;text-align:left;font-size:10px;letter-spacing:.14em;color:var(--muted)}
+thead th .sort:hover{color:var(--ink)}
+thead th[aria-sort="ascending"] .sort,thead th[aria-sort="descending"] .sort{color:var(--ink)}
+.ar{font-size:9px;width:10px;display:inline-block;color:var(--red)}
+tbody td{padding:0;border-bottom:1px solid var(--rule-ink);vertical-align:middle}
+tbody tr.i-row:hover{background:rgba(26,24,21,.032)}
+.c-name{padding-left:2px!important;width:25%}
+.row-toggle{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:10px 12px 10px 0;font-size:14px;letter-spacing:.01em}
+.row-toggle .pm{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;flex:0 0 15px;font-size:14px;line-height:1;color:var(--muted);border:1px solid transparent}
+.row-toggle:hover .pm{border-color:var(--rule);color:var(--ink)}
+.i-row.is-open .row-toggle{font-weight:600}
+.c-cl{font-size:11.5px;color:var(--muted);white-space:nowrap;padding-right:10px!important}
+.c-type .tag{display:inline-block;font-size:11.5px;border:1px solid var(--rule-ink);padding:1px 6px;white-space:nowrap}
+.c-n{white-space:nowrap;padding-right:10px!important}
+.dots{display:inline-flex;align-items:center;gap:2.5px;margin-left:7px;vertical-align:1px}
+.dot{width:4.5px;height:4.5px;border-radius:50%;background:var(--ink);display:inline-block}
+.dot-n{display:inline-flex;align-items:baseline;gap:1px;font-variant-numeric:tabular-nums}
+.dot-n b{font-weight:600;font-size:12px}
+.dot-n i{font-style:normal;font-size:8px;line-height:1}
+.c-votes{text-align:right;padding-right:16px!important;font-variant-numeric:tabular-nums;font-size:13px;white-space:nowrap}
+.c-avail{text-align:right;padding-right:0!important;white-space:nowrap}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;line-height:1.5;letter-spacing:.03em;padding:2px 6px;border:1px solid var(--gray);color:var(--muted);white-space:nowrap}
+.badge::before{content:"";width:4px;height:4px;background:currentColor;flex:0 0 4px}
+.badge.open{border-color:rgba(44,110,99,.5);color:var(--teal)}
+.badge.paid{border-color:rgba(139,133,124,.6);color:var(--muted)}
+.badge.none{border-style:dashed;border-color:var(--gray);color:var(--muted)}
+.badge.ok{border-color:rgba(44,110,99,.55);color:var(--teal)}
+.badge.bad{border-color:var(--red);background:var(--red);color:var(--paper)}
+.badge.part{border-color:rgba(139,133,124,.6);color:var(--muted)}
+.badge.unk{border-style:dashed;border-color:var(--gray);color:var(--muted)}
+tr.detail-row td{background:rgba(26,24,21,.028);border-bottom:1px solid var(--ink);padding:0}
+.detail-inner{padding:22px 26px 26px;border-left:2px solid var(--ink);display:grid;grid-template-columns:1.05fr 1.1fr 1fr 1fr;gap:28px}
+.dl{font-size:9.5px;letter-spacing:.17em;color:var(--muted);margin:0 0 8px;text-transform:uppercase}
+.detail-inner p{margin:0;font-size:13px;line-height:1.75}
+.detail-inner .q{font-family:var(--serif);font-size:17px;line-height:1.7;position:relative;padding-left:16px;color:var(--ink)}
+.detail-inner .q::before{content:"“";position:absolute;left:-2px;top:-8px;font-size:30px;color:var(--gray);line-height:1}
+.detail-inner .q::after{content:"”";font-size:30px;color:var(--gray);line-height:.4;vertical-align:-.2em;margin-left:2px}
+.counter{color:var(--muted)}
+.empty{padding:44px 10px;font-size:14px;color:var(--muted)}
+
+/* mobile cards */
+.cards{display:none}
+.m-card{border-bottom:1px solid var(--rule-ink);padding:15px 0 13px}
+.m-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.m-top h4{margin:0;font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.35}
+.m-meta{font-size:11.5px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums;line-height:1.7}
+.m-toggle{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);margin-top:7px;padding:3px 0}
+.m-toggle .pm{font-size:14px;line-height:1}
+.m-detail{padding:14px 0 4px;border-top:1px solid var(--rule);margin-top:10px}
+.m-detail .dl{margin-top:10px}
+.m-detail p{margin:0 0 4px;font-size:13px;line-height:1.7}
+.m-detail .q{font-family:var(--serif);font-size:16px;line-height:1.65;padding-left:14px;position:relative}
+.m-detail .q::before{content:"“";position:absolute;left:0;top:-4px;color:var(--gray)}
+
+/* 05 verify */
+.vcounts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.vc{padding:18px 22px 20px 0;border-right:1px solid var(--rule);position:relative}
+.vc+.vc{padding-left:22px}
+.vc:last-child{border-right:0}
+.vc::before{content:"";position:absolute;left:0;top:-1px;width:100%;height:3px;background:var(--gray);opacity:.35}
+.vc.v-ok::before{background:var(--teal);opacity:1}
+.vc.v-bad::before{background:var(--red);opacity:1}
+.vc.v-unk::before{background:repeating-linear-gradient(90deg,var(--gray) 0 6px,transparent 6px 11px);opacity:.9}
+.vc-n{font-family:var(--serif);font-size:clamp(38px,4.6vw,58px);line-height:1;font-variant-numeric:tabular-nums;display:block}
+.vc-l{display:block;font-size:12.5px;margin-top:7px;font-weight:600;letter-spacing:.02em}
+.vc-p{display:block;font-size:10.5px;color:var(--muted);margin-top:1px;font-variant-numeric:tabular-nums}
+.v-ok .vc-n{color:var(--teal)}
+.v-bad .vc-n{color:var(--red)}
+.v-part .vc-n{color:var(--ink)}
+.v-unk .vc-n{color:var(--muted)}
+.contrast{margin-top:46px;border-top:1px solid var(--ink)}
+.ct-row{display:grid;grid-template-columns:minmax(0,1fr) 94px minmax(0,1fr);align-items:center;gap:20px;padding:26px 0 28px;border-bottom:1px solid var(--rule)}
+.ct-side{min-width:0}
+.ct-label{font-size:10px;letter-spacing:.18em;color:var(--muted);margin-bottom:8px}
+.ct-num{font-family:var(--serif);font-size:clamp(32px,4vw,52px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.01em;white-space:nowrap}
+.ct-num span{font-family:var(--sans);font-size:11px;letter-spacing:.08em;margin-left:7px;color:var(--muted);vertical-align:.65em;white-space:nowrap}
+.ct-side.said .ct-num{color:var(--gray);text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:rgba(184,64,42,.75)}
+.ct-sub{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.6}
+.ct-mid{text-align:center}
+.ct-mid svg{display:block;margin:0 auto 7px;width:52px;height:14px}
+.ct-mid .badge{font-size:11px}
+.ct-note{font-size:10.5px;color:var(--muted);margin-top:7px;font-variant-numeric:tabular-nums}
+.vgroup{margin-top:52px}
+.vgroup-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:9px}
+.vgroup-head h3{font-family:var(--serif);font-size:23px;margin:0;font-weight:600}
+.vgroup-head .n{font-family:var(--serif);font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+.vgroup-head .rule{font-size:11px;color:var(--muted);margin-left:auto;letter-spacing:.04em}
+.vgroup-head .bar{width:34px;height:2px;background:var(--gray);align-self:center}
+.vgroup.g-ok .bar{background:var(--teal)}
+.vgroup.g-bad .bar{background:var(--red)}
+.vgroup.g-unk .bar{background:repeating-linear-gradient(90deg,var(--gray) 0 4px,transparent 4px 8px)}
+.v-row{display:grid;grid-template-columns:58px 106px minmax(0,1.2fr) minmax(0,1.6fr) 74px;gap:16px;align-items:start;width:100%;text-align:left;padding:13px 6px 14px 0;border-bottom:1px solid var(--rule-ink);cursor:pointer}
+.v-row:hover{background:rgba(26,24,21,.028)}
+.v-id{font-size:10px;color:var(--muted);letter-spacing:.05em;padding-top:3px;font-variant-numeric:tabular-nums}
+.v-ind{font-size:12.5px;line-height:1.6;padding-top:1px}
+.v-claim,.v-actual{font-size:12.5px;line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding-top:1px}
+.v-claim{color:var(--ink)}
+.v-actual{color:var(--muted)}
+.v-row.open .v-claim,.v-row.open .v-actual{-webkit-line-clamp:unset;display:block;overflow:visible}
+.v-row .badge{justify-self:end;margin-top:2px}
+.v-row.open{background:rgba(26,24,21,.025)}
+.v-note{display:none;grid-column:1/-1;font-size:11.5px;line-height:1.7;color:var(--ink-soft);border-left:2px solid var(--gray);padding:8px 0 2px 12px;margin-top:4px}
+.v-note b{font-weight:600;color:var(--ink)}
+.v-row.open .v-note{display:block}
+.v-hint{font-size:10px;color:var(--muted);margin-top:10px;letter-spacing:.04em}
+.errors{margin-top:64px;border-top:2px solid var(--ink);padding-top:20px}
+.errors-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:24px}
+.errors-head h3{font-family:var(--serif);font-size:24px;margin:0;font-weight:600}
+.errors-head span{font-size:10.5px;letter-spacing:.13em;color:var(--muted)}
+.err-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
+.err{padding:20px 26px 6px 0;border-right:1px solid var(--rule)}
+.err+.err{padding-left:26px}
+.err:last-child{border-right:0}
+.err-k{font-size:10px;letter-spacing:.15em;color:var(--red);margin-bottom:8px}
+.err h4{font-size:15px;margin:0 0 8px;font-weight:600;line-height:1.5}
+.err p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.75}
+.err p b{color:var(--ink);font-weight:600}
+
+/* 06 reverse scatter */
+.reverse-band{margin-top:38px;background:rgba(26,24,21,.018);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:26px 0 22px}
+.scatter-wrap{position:relative}
+.swipe-hint{display:none}
+.scatter-scroll{overflow-x:auto;overflow-y:hidden}
+.scatter-svg{display:block;width:100%;min-width:640px;height:auto}
+.scatter-svg text{font-family:var(--sans);fill:var(--ink)}
+.q-line{stroke:rgba(139,133,124,.5);stroke-width:1}
+.q-line.mid{stroke:rgba(26,24,21,.42)}
+.q-zone{fill:var(--red);opacity:.035}
+.axis-label{font-size:11px;fill:var(--muted);letter-spacing:.12em}
+.quad-t{font-family:var(--serif);font-size:17px;font-weight:600}
+.quad-s{font-size:11px;fill:rgba(26,24,21,.66)}
+.quad-bad .quad-t{fill:var(--red)}
+.quad-bad .quad-s{fill:var(--red)}
+.pt{cursor:pointer}
+.pt circle{stroke:var(--paper);stroke-width:1.5;transition:r .15s ease}
+.pt:hover circle,.pt:focus circle{stroke:var(--ink);stroke-width:2}
+.pt:focus{outline:none}
+.pt text{font-size:12px;paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.pt .pt-sub{font-size:9px;fill:var(--muted)}
+.pt.is-active circle{stroke:var(--ink);stroke-width:2.5}
+.tt{position:absolute;z-index:4;max-width:290px;background:var(--ink);color:var(--paper);padding:11px 13px 12px;font-size:11.5px;line-height:1.65;pointer-events:none;box-shadow:0 3px 0 rgba(26,24,21,.12)}
+.tt strong{font-family:var(--serif);font-size:15px;font-weight:600;display:inline-block;margin-right:8px}
+.tt .tt-v{font-size:10px;letter-spacing:.08em;border:1px solid rgba(246,243,238,.45);padding:0 5px;display:inline-block;margin-bottom:5px}
+.tt .tt-d{color:rgba(246,243,238,.72);font-size:10.5px;margin-bottom:4px}
+.tt p{margin:3px 0 0;color:rgba(246,243,238,.86)}
+.legend{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;margin-top:14px;padding:0 2px;font-size:11.5px;color:var(--muted)}
+.lg{display:inline-flex;align-items:center;gap:7px}
+.lg i{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--ink)}
+.lg b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.lg.ok i{background:var(--teal)}.lg.part i{background:var(--gray)}.lg.ex i{background:var(--ink)}.lg.bad i{background:var(--red)}
+.legend .hint{margin-left:auto;letter-spacing:.04em}
+.rev-bottom{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);margin-top:0}
+.rb{padding:18px 26px 20px 0;border-right:1px solid var(--rule)}
+.rb+.rb{padding-left:26px}
+.rb:last-child{border-right:0}
+.rb-n{font-family:var(--serif);font-size:clamp(30px,3.5vw,44px);line-height:1;font-variant-numeric:tabular-nums;display:block}
+.rb-l{display:block;font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.6}
+.rb.hot .rb-n{color:var(--red)}
+.rb.cool .rb-n{color:var(--teal)}
+.rev-detail{margin-top:26px;border-top:1px solid var(--ink);padding-top:20px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:38px}
+.rd-left .rd-ind{font-family:var(--serif);font-size:32px;line-height:1.2;margin:0 0 6px}
+.rd-badges{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 10px}
+.rd-dir{font-size:11.5px;color:var(--muted);line-height:1.6}
+.rd-hint{font-size:10px;color:var(--muted);letter-spacing:.05em;margin-top:12px}
+.rd-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.rd-k{font-size:11px;line-height:1.6;color:var(--muted);margin:0 0 5px}
+.rd-v{font-size:12.5px;line-height:1.75;margin:0}
+.rd-note{grid-column:1/-1;margin:0;padding-top:13px;border-top:1px solid var(--rule);font-size:12.5px;line-height:1.75;color:var(--muted)}
+.rd-note b{color:var(--ink);font-weight:600}
+
+/* 07 decidability */
+.dec-bar{display:flex;height:66px;margin-top:40px;border:1px solid var(--ink)}
+.dec-a{background:var(--teal);color:var(--paper);display:flex;align-items:center;padding:0 18px;gap:12px;min-width:0}
+.dec-a .n{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.dec-a .l{font-size:11.5px;letter-spacing:.03em;line-height:1.35}
+.dec-b{flex:1;display:flex;align-items:center;justify-content:flex-end;padding:0 16px;gap:10px;background:repeating-linear-gradient(135deg,rgba(139,133,124,.18) 0 1px,transparent 1px 7px);border-left:1px dashed var(--gray)}
+.dec-b .n{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.dec-b .l{font-size:11.5px;color:var(--muted);line-height:1.35;text-align:right}
+.dec-caption{display:flex;justify-content:space-between;gap:20px;margin-top:10px;font-size:11px;color:var(--muted);line-height:1.6}
+.dec-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:60px;margin-top:42px;align-items:start}
+.dec-h{font-size:10.5px;letter-spacing:.15em;color:var(--muted);border-bottom:1px solid var(--ink);padding-bottom:8px;margin:0 0 14px}
+.dec-list{list-style:none;margin:0;padding:0;columns:2;column-gap:34px}
+.dec-list li{display:flex;gap:12px;align-items:baseline;border-bottom:1px solid var(--rule-ink);padding:5px 0;font-size:13px}
+.dec-list .i{font-size:9.5px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:16px}
+.quote-frame{border:1px solid var(--ink);padding:26px 26px 28px;position:relative;margin-top:4px}
+.quote-frame .qm{font-family:var(--serif);font-size:64px;line-height:.6;color:var(--gray);display:block;margin-bottom:11px}
+.quote-frame p{font-family:var(--serif);font-size:20px;line-height:1.65;margin:0;letter-spacing:.005em}
+.quote-frame .src{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);margin-top:16px}
+
+/* 08 method */
+.rules{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);margin-top:38px}
+.rule{padding:24px 34px 28px 0;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
+.rule:nth-child(2n){padding-left:34px;border-right:0}
+.rule .no{font-family:var(--serif);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rule h3{font-family:var(--serif);font-size:21px;margin:8px 0 8px;font-weight:600;line-height:1.4}
+.rule p{font-size:13px;line-height:1.8;color:var(--muted);margin:0;max-width:48ch}
+.rule p b{color:var(--ink);font-weight:600}
+.thr-wrap{margin-top:46px}
+.thr-h{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:1px solid var(--ink);padding-bottom:9px}
+.thr-h h3{font-family:var(--serif);font-size:21px;margin:0;font-weight:600}
+.thr-h span{font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+table.thr{font-size:12.5px}
+table.thr th{font-size:9.5px;letter-spacing:.15em;color:var(--muted);border-bottom:1px solid var(--rule);padding:9px 12px 9px 0;font-weight:400}
+table.thr td{border-bottom:1px solid var(--rule-ink);padding:11px 14px 12px 0;vertical-align:top;line-height:1.7}
+table.thr td:first-child{font-family:var(--serif);font-size:18px;white-space:nowrap;width:120px}
+table.thr tr.crash td:first-child{color:var(--red)}
+table.thr td.cond{color:var(--muted)}
+.method-close{font-family:var(--serif);font-size:clamp(19px,2.4vw,27px);line-height:1.6;margin:48px 0 0;max-width:980px;padding-top:24px;border-top:1px solid var(--ink);text-wrap:balance}
+.method-close b{font-weight:600}
+
+/* footer */
+footer{margin-top:120px;background:var(--ink);color:var(--paper);padding:56px 0 26px}
+.f-top{display:grid;grid-template-columns:1.2fr 1fr 1.1fr;gap:56px;padding-bottom:44px;border-bottom:1px solid rgba(246,243,238,.24)}
+.f-k{font-size:9.5px;letter-spacing:.18em;color:rgba(246,243,238,.58);margin:0 0 14px}
+.f-list{list-style:none;margin:0;padding:0;font-size:12.5px;line-height:2.05}
+.f-list a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(246,243,238,.3)}
+.f-list a:hover{border-color:var(--paper)}
+.f-list .d{color:rgba(246,243,238,.56);margin-left:8px;font-size:11px}
+.f-p{font-size:12.5px;line-height:1.85;color:rgba(246,243,238,.74);margin:0}
+.f-caveat{font-family:var(--serif);font-size:clamp(17px,2vw,22px);line-height:1.65;margin:38px 0 0;max-width:960px;color:var(--paper)}
+.f-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:36px;padding-top:14px;border-top:1px solid rgba(246,243,238,.24);font-size:10px;letter-spacing:.06em;color:rgba(246,243,238,.55);font-variant-numeric:tabular-nums}
+
+/* responsive */
+@media (max-width:980px){
+  .hero-dek-row{grid-template-columns:1fr;gap:18px}
+  .hero-abs{max-width:62ch}
+  .cluster-grid{grid-template-columns:1fr;gap:34px}
+  .cluster-aside{position:static;order:-1}
+  .dec-grid{grid-template-columns:1fr;gap:40px}
+  .rev-detail{grid-template-columns:1fr;gap:22px}
+  .rd-grid{grid-template-columns:1fr}
+  .detail-inner{grid-template-columns:1fr 1fr;gap:22px}
+}
+@media (max-width:760px){
+  .wrap{width:calc(100% - 40px)}
+  .mast-right span:first-child{display:none}
+  .hero{padding-top:34px}
+  .kicker{font-size:9px;letter-spacing:.14em}
+  h1{margin-top:22px}
+  .hero-dek-row{margin-top:24px}
+  .hero-abs span{display:block}
+  .hero-meta{line-height:2}
+  .stats{grid-template-columns:1fr 1fr;margin-top:26px}
+  .stat{padding:16px 14px 18px 0!important;border-bottom:1px solid var(--rule)}
+  .stat:nth-child(2n){border-right:0;padding-left:16px!important}
+  .stat:nth-child(3),.stat:nth-child(4){border-bottom:0}
+  .stat-l{font-size:11.5px;margin-top:8px}
+  .hero-conclusion{margin-top:32px}
+  .hero-foot{margin-top:38px;font-size:9px;line-height:1.8}
+  section.block{padding-top:82px}
+  .sec-head{grid-template-columns:40px minmax(0,1fr);gap:14px}
+  .sec-aside{display:none}
+  .sec-sub{font-size:13.5px}
+  .type-bar{height:88px;margin-top:28px}
+  .seg{height:78px;padding:0 6px 10px}
+  .seg-n{font-size:23px}
+  .seg-t{font-size:11px}
+  .seg-p{font-size:9px}
+  .type-notes{grid-template-columns:1fr 1fr!important}
+  .type-note{padding:16px 14px 18px 0!important;border-bottom:1px solid var(--rule)}
+  .type-note:nth-last-child(-n+2){border-bottom:0}
+  .flow-head{display:block;margin-top:26px}
+  .flow-hint{display:block;margin-top:7px;line-height:1.5}
+  .type-note:nth-child(2n){border-right:0;padding-left:14px!important}
+  .tn-p{font-size:12px}
+  .flow{gap:7px}
+  .ind{font-size:12px;padding:4px 7px}
+  .cl-row{grid-template-columns:22px 80px minmax(0,1fr) 32px;gap:8px}
+  .cl-name{font-size:12.5px}
+  .ca-t{font-size:21px}
+  .table-tools{align-items:flex-start;flex-direction:column;gap:10px}
+  .filters{gap:7px 16px}
+  .table-wrap{display:none}
+  .cards{display:block;border-top:1px solid var(--ink);margin-top:4px}
+  .vcounts{grid-template-columns:1fr 1fr}
+  .vc{padding:14px 14px 16px 0!important;border-bottom:1px solid var(--rule)}
+  .vc:nth-child(2n){border-right:0;padding-left:14px!important}
+  .vc:nth-child(3),.vc:nth-child(4){border-bottom:0}
+  .contrast{margin-top:34px}
+  .ct-row{grid-template-columns:1fr;gap:7px;padding:22px 0 24px}
+  .ct-mid{display:flex;align-items:center;gap:9px;text-align:left;margin:3px 0}
+  .ct-mid svg{width:34px;flex:0 0 34px;margin:0}
+  .ct-mid .badge{flex:0 0 auto}
+  .ct-note{margin:0}
+  .ct-num{font-size:34px}
+  .ct-num span{font-size:9px;margin-left:4px}
+  .v-row{grid-template-columns:1fr auto;gap:4px 12px;padding:14px 0}
+  .v-id{grid-column:1/-1;padding-top:0;font-size:9px}
+  .v-ind{grid-column:1;font-size:12px}
+  .v-claim,.v-actual{grid-column:1/-1}
+  .v-row .badge{grid-column:2;grid-row:2;align-self:start}
+  .v-row .badge::before{display:none}
+  .v-note{grid-column:1/-1;border-left:0;padding-left:0}
+  .vgroup-head .rule{display:none}
+  .errors{margin-top:46px}
+  .err-grid{grid-template-columns:1fr}
+  .err{padding:18px 0 16px!important;border-right:0;border-bottom:1px solid var(--rule)}
+  .err:last-child{border-bottom:0}
+  .reverse-band{padding:16px 0 14px}
+  .swipe-hint{display:block;font-size:10px;letter-spacing:.08em;color:var(--muted);padding:0 2px 9px}
+  .scatter-svg{min-width:620px}
+  .legend{gap:9px 18px}
+  .legend .hint{display:none}
+  .rev-bottom{grid-template-columns:1fr}
+  .rb{padding:14px 0 15px!important;border-right:0;border-bottom:1px solid var(--rule)}
+  .rb:last-child{border-bottom:0}
+  .rb:first-child{grid-column:auto}
+  .rb:nth-child(2){border-right:0}
+  .dec-bar{height:56px}
+  .dec-a{padding:0 10px;gap:7px}
+  .dec-a .n,.dec-b .n{font-size:23px}
+  .dec-a .l{font-size:10px}
+  .dec-b{padding:0 10px;justify-content:flex-end}
+  .dec-b .l{display:none}
+  .dec-caption{flex-direction:column;gap:4px}
+  .dec-list{columns:1}
+  .quote-frame{padding:20px 20px 22px}
+  .quote-frame p{font-size:17px}
+  .rules{grid-template-columns:1fr}
+  .rule{padding:20px 0 22px!important;border-right:0}
+  table.thr td:first-child{width:82px;font-size:16px}
+  table.thr{font-size:11.5px}
+  footer{margin-top:84px;padding-top:40px}
+  .f-top{grid-template-columns:1fr;gap:30px;padding-bottom:30px}
+  .f-bottom{flex-direction:column;gap:6px}
+  .detail-inner{grid-template-columns:1fr;gap:18px}
+  .rev-detail{padding-top:16px}
+  .rd-ind{font-size:27px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+@media print{
+  body{background:#fff;color:#000;font-size:11px}
+  .masthead,.table-tools,.flow-hint,.m-toggle,.row-toggle .pm,.ca-clear,.tt,.legend,.rd-hint,.skip{display:none!important}
+  .wrap{width:100%;max-width:none}
+  section.block{padding-top:34px;break-inside:auto}
+  .hero{min-height:0;padding-top:0}
+  h1{font-size:64px}
+  .stats,.vcounts,.rev-bottom,.type-notes,.rules{break-inside:avoid}
+  .detail-row{display:none!important}
+  footer{background:none;color:#000;border-top:1px solid #000}
+  footer .f-p,footer .f-k,footer .f-bottom,footer .f-list a,footer .f-caveat{color:#000}
+  .f-list a{border-bottom:0}
+  a{text-decoration:none;color:#000}
+  .scatter-svg{min-width:0}
+  .table-wrap{display:block!important}
+  .cards{display:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#types">跳到正文</a>
+
+<header class="masthead">
+  <div class="wrap mast">
+    <a class="brand" href="#top" aria-label="回到页首">悄悄崩盘<span class="brand-sub"> / CRASH AUDIT</span></a>
+    <div class="mast-right">
+      <span>知乎语料 · 85 条有效回答</span>
+      <span>2026.11.09</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="kicker"><span>行业叙事 · 可验证性审计</span><span>NO. 01 / 2026</span></div>
+    <h1 id="hero-title">悄悄<span class="red">崩盘</span>的行业</h1>
+    <div class="hero-dek-row">
+      <p class="hero-dek">一份 88 个行业的<br>可验证性审计</p>
+      <p class="hero-abs"><span>把 120 条“这个行业崩了”的回答拆开：</span><span><b>价格崩、利润崩、渠道转移、供给出清</b>占多数，</span><span>真正属于需求消失的只有 43%。</span></p>
+    </div>
+    <p class="hero-meta"><span>知乎 120 条回答</span><span>85 条有效</span><span>88 个行业</span><span>34 个数字核验</span><span>12 个行业反向验证</span></p>
+
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><span class="stat-n num">43<em>%</em></span><span class="stat-l">只有四成是需求真减少</span></div>
+      <div class="stat" role="listitem"><span class="stat-n num">16.7<em>%</em></span><span class="stat-l">能被官方数据检验时，答主严格说对的比例</span></div>
+      <div class="stat" role="listitem"><span class="stat-n num">2<em>/34</em></span><span class="stat-l">被证伪的数字</span></div>
+      <div class="stat" role="listitem"><span class="stat-n num">88</span><span class="stat-l">提到的行业数</span></div>
+    </div>
+
+    <blockquote class="hero-conclusion">“崩盘叙事很少靠编数字，它靠的是用价格与利润的方向替代数量的方向。”</blockquote>
+    <div class="hero-foot"><span>向下：四种崩法 · 12 个簇 · 88 个行业的全部证据</span><span>SCROLL / 01—08</span></div>
+  </section>
+
+  <section class="block wrap" id="types" aria-labelledby="types-title">
+    <div class="sec-head">
+      <div class="sec-no">01</div>
+      <div>
+        <h2 id="types-title">四种崩法</h2>
+        <p class="sec-sub">同一个“崩”字，四种完全相反的政策含义。先分清它到底在崩什么。</p>
+      </div>
+      <div class="sec-aside">88 个行业 · 单一归类<br>点击色块切换</div>
+    </div>
+
+    <div class="type-bar" id="type-bar" role="group" aria-label="按崩盘类型查看行业"></div>
+    <div class="type-notes" id="type-notes"></div>
+
+    <div class="flow-head">
+      <p class="flow-title" id="flow-title">量塌陷 <span>38 个行业</span></p>
+      <span class="flow-hint">名称后为独立回答数 · 数据来自 88 行业全表</span>
+    </div>
+    <div class="flow" id="flow" aria-live="polite"></div>
+  </section>
+
+  <section class="block wrap" id="clusters" aria-labelledby="clusters-title">
+    <div class="sec-head">
+      <div class="sec-no">02</div>
+      <div>
+        <h2 id="clusters-title">12 个簇</h2>
+        <p class="sec-sub">行业不是散落的：婚育、教育、地产、财政、AI 五条链条各自成簇。</p>
+      </div>
+      <div class="sec-aside">按行业数降序<br>点击筛选下方全表</div>
+    </div>
+
+    <div class="cluster-grid">
+      <div class="cl-list" id="cl-list" role="group" aria-label="按行业簇筛选"></div>
+      <aside class="cluster-aside">
+        <p class="ca-k">READING / 读法</p>
+        <p class="ca-t">最大的簇不是最惨的行业，是最容易被一起讲述的行业。</p>
+        <p class="ca-p">F 传统零售与 E AI 白领合计 32 个行业，占全表的 36%。点任意一条，下方 88 行业表会立刻筛到该簇；再点一次取消。</p>
+        <div class="ca-status" id="cluster-status">当前：未按簇筛选</div>
+        <button class="ca-clear" id="cluster-clear" hidden>清除簇筛选</button>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block wrap" id="table" aria-labelledby="table-title">
+    <div class="sec-head">
+      <div class="sec-no">03</div>
+      <div>
+        <h2 id="table-title">88 个行业全表</h2>
+        <p class="sec-sub">这是覆盖度最重要的一屏。每一行都能展开到作者原话、首选指标与反证条件。</p>
+      </div>
+      <div class="sec-aside">6 列可排序 · 行可展开<br>筛选条件同时生效</div>
+    </div>
+
+    <div class="table-tools">
+      <div class="filters" id="filters">
+        <div class="fg" role="group" aria-label="按崩盘形态筛选">
+          <span class="fg-label">形态</span>
+          <button class="chip" data-f="type" data-v="全部" aria-pressed="true">全部</button>
+          <button class="chip" data-f="type" data-v="量塌陷" aria-pressed="false">量塌陷</button>
+          <button class="chip" data-f="type" data-v="价塌陷" aria-pressed="false">价塌陷</button>
+          <button class="chip" data-f="type" data-v="供给出清" aria-pressed="false">供给出清</button>
+          <button class="chip" data-f="type" data-v="结构转移" aria-pressed="false">结构转移</button>
+        </div>
+        <div class="fg" role="group" aria-label="按证据口径筛选">
+          <span class="fg-label">口径</span>
+          <button class="chip" data-f="avail" data-v="全部" aria-pressed="true">全部</button>
+          <button class="chip" data-f="avail" data-v="open" aria-pressed="false">有官方口径</button>
+          <button class="chip" data-f="avail" data-v="paid" aria-pressed="false">仅代理</button>
+          <button class="chip" data-f="avail" data-v="none" aria-pressed="false">无口径</button>
+        </div>
+        <button class="chip chip-cluster" id="cluster-chip" hidden aria-pressed="true">簇 <span id="cluster-chip-t"></span><span class="x" aria-hidden="true">×</span></button>
+      </div>
+      <div class="table-count">当前显示 <b id="shown-a">88</b> / 88</div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="ind-table">
+        <colgroup><col style="width:27%"><col style="width:19%"><col style="width:13%"><col style="width:17%"><col style="width:13%"><col style="width:11%"></colgroup>
+        <caption>88 个行业 · 点击表头排序，点击任意一行展开证据</caption>
+        <thead>
+          <tr>
+            <th scope="col" data-key="name" aria-sort="none"><button class="sort" data-key="name">行业<span class="ar"></span></button></th>
+            <th scope="col" data-key="cluster" aria-sort="none"><button class="sort" data-key="cluster">簇<span class="ar"></span></button></th>
+            <th scope="col" data-key="type" aria-sort="none"><button class="sort" data-key="type">崩盘类型<span class="ar"></span></button></th>
+            <th scope="col" data-key="n_answers" aria-sort="descending"><button class="sort" data-key="n_answers">独立回答数<span class="ar">↓</span></button></th>
+            <th scope="col" data-key="votes" aria-sort="none" style="text-align:right"><button class="sort" data-key="votes" style="justify-content:flex-end">总赞<span class="ar"></span></button></th>
+            <th scope="col" data-key="avail" aria-sort="none"><button class="sort" data-key="avail" style="justify-content:flex-end">证据<span class="ar"></span></button></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="cards" id="cards" aria-label="88 个行业卡片列表"></div>
+    <div class="table-count" style="text-align:right;margin-top:10px">当前显示 <b id="shown-b">88</b> / 88</div>
+  </section>
+
+  <section class="block wrap" id="verify" aria-labelledby="verify-title">
+    <div class="sec-head">
+      <div class="sec-no">04</div>
+      <div>
+        <h2 id="verify-title">34 个数字核验</h2>
+        <p class="sec-sub">逐条回查官方统计、协会年报与上市公司财报。极少数被证伪，但“方向对、数字错”的比例不低。</p>
+      </div>
+      <div class="sec-aside">34 条 · 17 证实 · 9 部分<br>2 证伪 · 6 无法溯源</div>
+    </div>
+
+    <div class="vcounts" id="vcounts" aria-label="核验结果计数"></div>
+
+    <div class="contrast" aria-label="两条被证伪的对照">
+      <div class="ct-row">
+        <div class="ct-side said">
+          <div class="ct-label">答主说 / CLAIMED</div>
+          <div class="ct-num num">474.7<span>万对</span></div>
+          <div class="ct-sub">2026 年前三季度结婚登记 · 婚庆</div>
+        </div>
+        <div class="ct-mid">
+          <svg viewBox="0 0 52 14" aria-hidden="true"><path d="M1 7h46M40 1l7 6-7 6" fill="none" stroke="#B8402A" stroke-width="1.4"/></svg>
+          <span class="badge bad">证伪</span>
+          <div class="ct-note">高报 9.9 万对（+2.13%）</div>
+        </div>
+        <div class="ct-side">
+          <div class="ct-label">实际是 / ACTUAL</div>
+          <div class="ct-num num">464.8<span>万对</span></div>
+          <div class="ct-sub">民政部《2026年3季度民政统计数据》</div>
+        </div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-side said">
+          <div class="ct-label">答主说 / CLAIMED</div>
+          <div class="ct-num num">1883<span>万</span></div>
+          <div class="ct-sub">2016 年出生人口 · 月子中心</div>
+        </div>
+        <div class="ct-mid">
+          <svg viewBox="0 0 52 14" aria-hidden="true"><path d="M1 7h46M40 1l7 6-7 6" fill="none" stroke="#B8402A" stroke-width="1.4"/></svg>
+          <span class="badge bad">证伪</span>
+          <div class="ct-note">高报 97 万（+5.4%）</div>
+        </div>
+        <div class="ct-side">
+          <div class="ct-label">实际是 / ACTUAL</div>
+          <div class="ct-num num">1786<span>万</span></div>
+          <div class="ct-sub">国家统计局《2016年国民经济和社会发展统计公报》</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="vgroups"></div>
+    <p class="v-hint">长文本默认截断，点击任意一条展开原文与核验注记。</p>
+
+    <div class="errors">
+      <div class="errors-head">
+        <h3>被数字掩盖的三类错误</h3>
+        <span>FROM THE 9 “部分证实” CASES</span>
+      </div>
+      <div class="err-grid">
+        <div class="err">
+          <div class="err-k">01 / 归属错位</div>
+          <h4>中铁的 -5.76%<br>被安到了中建头上</h4>
+          <p>数字本身是真的，但对象错了。中建 2025 年营收实际为 <b>-4.81%</b>；把别家公司的跌幅借来当自己的证据，是“部分证实”里最常见的一类。</p>
+        </div>
+        <div class="err">
+          <div class="err-k">02 / 口径错位</div>
+          <h4>2.19 亿是“近一年”<br>不是“累计”</h4>
+          <p>铂爵旅拍的被执行金额确实存在，但那是近一年的累计数，不是历史累计；<b>31 次</b>是“被执行”次数，失信记录实际只有 <b>1 条、63 万元</b>。</p>
+        </div>
+        <div class="err">
+          <div class="err-k">03 / 伪指标</div>
+          <h4>驾校“产能利用率<br>28.6%”没有这个科目</h4>
+          <p>精确到小数点，却对应不上任何统计制度。驾培行业没有“产能利用率”这一科目，分母也没有统一口径——<b>这是最像数据、也最不可核验的一种</b>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="reverse" aria-labelledby="reverse-title">
+    <div class="sec-head">
+      <div class="sec-no">05</div>
+      <div>
+        <h2 id="reverse-title">12 个行业，量价对撞</h2>
+        <p class="sec-sub">不看答主说什么，只看官方量价序列自己走成什么样。横轴是量，纵轴是价。</p>
+      </div>
+      <div class="sec-aside">2×2 象限 · 12 个点<br>悬停看首句，点击看全序列</div>
+    </div>
+
+    <div class="reverse-band">
+      <div class="scatter-wrap">
+        <div class="swipe-hint" aria-hidden="true">← 左右滑动查看完整象限 →</div>
+        <div class="scatter-scroll">
+          <svg class="scatter-svg" viewBox="0 0 760 560" role="img" aria-labelledby="sc-title sc-desc">
+            <title id="sc-title">12 个行业的量价方向散点图</title>
+            <desc id="sc-desc">横轴为量的方向，左侧收缩、右侧增长；纵轴为价的方向，上方上涨、下方下跌。点色表示判定：青为基本正确，灰为部分正确，墨为夸大，朱为说反。</desc>
+            <rect class="q-zone" x="80" y="280" width="320" height="220"></rect>
+            <line class="q-line mid" x1="80" y1="280" x2="720" y2="280"></line>
+            <line class="q-line mid" x1="400" y1="60" x2="400" y2="500"></line>
+            <line class="q-line" x1="80" y1="60" x2="720" y2="60"></line>
+            <line class="q-line" x1="80" y1="500" x2="720" y2="500"></line>
+            <line class="q-line" x1="80" y1="60" x2="80" y2="500"></line>
+            <line class="q-line" x1="720" y1="60" x2="720" y2="500"></line>
+            <path d="M712 274l8 6-8 6M394 68l6-8 6 8" fill="none" stroke="#1A1815" stroke-width="1.2"></path>
+            <text class="axis-label" x="80" y="266">← 收缩</text>
+            <text class="axis-label" x="720" y="266" text-anchor="end">增长 →</text>
+            <text class="axis-label" x="409" y="52">↑ 上涨</text>
+            <text class="axis-label" x="409" y="518">↓ 下跌</text>
+            <text class="axis-label" x="400" y="544" text-anchor="middle">量的方向 / VOLUME</text>
+            <text class="axis-label" x="40" y="280" text-anchor="middle" transform="rotate(-90 40 280)">价的方向 / PRICE</text>
+
+            <text class="quad-t" x="96" y="96">量减价增</text>
+            <text class="quad-s" x="96" y="116">收缩中提价</text>
+            <text class="quad-t" x="704" y="96" text-anchor="end">量价齐升</text>
+            <text class="quad-s" x="704" y="116" text-anchor="end">说它崩，基本是伪命题</text>
+            <text class="quad-t quad-bad" x="96" y="480">量价齐跌</text>
+            <text class="quad-s quad-bad" x="96" y="500">只有这里才是真衰退</text>
+            <text class="quad-t" x="704" y="480" text-anchor="end">量增价减</text>
+            <text class="quad-s" x="704" y="500" text-anchor="end">是内卷，不是崩盘</text>
+            <g id="pts"></g>
+          </svg>
+        </div>
+        <div class="tt" id="tt" hidden aria-hidden="true"></div>
+      </div>
+      <div class="legend" id="legend">
+        <span class="lg ok"><i></i>基本正确 <b>2</b></span>
+        <span class="lg part"><i></i>部分正确 <b>4</b></span>
+        <span class="lg ex"><i></i>夸大 <b>5</b></span>
+        <span class="lg bad"><i></i>说反 <b>1</b></span>
+        <span class="hint">判定色 · 点数即 12 个被反向验证的行业</span>
+      </div>
+    </div>
+
+    <div class="rev-bottom">
+      <div class="rb hot"><span class="rb-n num">2/12</span><span class="rb-l">严格命中率 <b>16.7%</b>；10 个行业至少有一个维度说错</span></div>
+      <div class="rb hot"><span class="rb-n num">6/12</span><span class="rb-l">量维度判错 <b>50%</b>；把“增速放缓”或“渠道转移”当成需求消失</span></div>
+      <div class="rb cool"><span class="rb-n num">8</span><span class="rb-l">个行业的量还在涨：二手车、汽车、餐饮、宠物、电商、保险、旅游、酒店</span></div>
+    </div>
+
+    <aside class="rev-detail" id="rev-detail" aria-live="polite"></aside>
+  </section>
+
+  <section class="block wrap" id="decidability" aria-labelledby="dec-title">
+    <div class="sec-head">
+      <div class="sec-no">06</div>
+      <div>
+        <h2 id="dec-title">可判定性分层</h2>
+        <p class="sec-sub">不是所有“崩了”都值得争论。有些行业有官方序列可以直接证伪，有些行业结构上就证不了。</p>
+      </div>
+      <div class="sec-aside">69 : 19<br>可判定 / 只能怀疑</div>
+    </div>
+
+    <div class="dec-bar" role="img" aria-label="88 个行业中，69 个可判定，19 个只能靠代理指标">
+      <div class="dec-a" style="width:78.4%">
+        <span class="n num">69</span>
+        <span class="l">有官方统计或审计财报<br>可以直接证伪</span>
+      </div>
+      <div class="dec-b" style="width:21.6%">
+        <span class="l">只能靠代理指标<br>结论上限是“疑似”</span>
+        <span class="n num">19</span>
+      </div>
+    </div>
+    <div class="dec-caption"><span>L1/L2：统计局、部委、协会年报、上市公司审计财报</span><span>L3/L4：企查查、招聘岗位、平台价、个人见闻</span></div>
+
+    <div class="dec-grid">
+      <div>
+        <h3 class="dec-h">19 个只能靠代理指标的行业</h3>
+        <ol class="dec-list">
+          <li><span class="i">01</span>美发</li>
+          <li><span class="i">02</span>早餐店</li>
+          <li><span class="i">03</span>画师</li>
+          <li><span class="i">04</span>平面模特</li>
+          <li><span class="i">05</span>消杀</li>
+          <li><span class="i">06</span>二手相机</li>
+          <li><span class="i">07</span>包养</li>
+          <li><span class="i">08</span>棋类培训</li>
+          <li><span class="i">09</span>兴趣教培</li>
+          <li><span class="i">10</span>双截棍培训</li>
+          <li><span class="i">11</span>钢琴培训</li>
+          <li><span class="i">12</span>政务信息化</li>
+          <li><span class="i">13</span>售电</li>
+          <li><span class="i">14</span>消防维保</li>
+          <li><span class="i">15</span>公共部门咨询</li>
+          <li><span class="i">16</span>编制教师</li>
+          <li><span class="i">17</span>贷款中介</li>
+          <li><span class="i">18</span>体育分析咨询</li>
+          <li><span class="i">19</span>新车路试</li>
+        </ol>
+      </div>
+      <div class="quote-frame">
+        <span class="qm" aria-hidden="true">“</span>
+        <p>能判定的行业，恰恰是被讨论得最充分的行业。语料的可信度分布和它的传播力分布，是反相关的。</p>
+        <div class="src">SELECTION BIAS / 隐藏的选择偏差</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="method" aria-labelledby="method-title">
+    <div class="sec-head">
+      <div class="sec-no">07</div>
+      <div>
+        <h2 id="method-title">怎么验证</h2>
+        <p class="sec-sub">四条硬规则，加一张五档判定表。这套框架的作用不是证明谁对，而是让“崩了”变成一个可以被推翻的句子。</p>
+      </div>
+      <div class="sec-aside">四规则 · 五档阈值<br>METHOD / 01—04</div>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="no">01</div>
+        <h3>举证责任在主张“转移”的人</h3>
+        <p>主张“结构转移”的人，必须<b>指认承接方并给出承接方的量</b>。指不出来，“转移”就只是“消失”的委婉说法。</p>
+      </div>
+      <div class="rule">
+        <div class="no">02</div>
+        <h3>只有 L1/L2 能落锤</h3>
+        <p>官方统计与审计财报<b>可以证伪</b>；企查查、百度指数、招聘岗位数只能提出怀疑。证据层级不够，结论就只能是“疑似”。</p>
+      </div>
+      <div class="rule">
+        <div class="no">03</div>
+        <h3>崩盘要同时满足三条阈值</h3>
+        <p>量连续 3 年负增长且累计降幅 &gt;20%；价格分项连续 8 季度跑输 CPI；供给退出率 &gt;15%。<b>三条齐备才算崩盘</b>。</p>
+      </div>
+      <div class="rule">
+        <div class="no">04</div>
+        <h3>量价四象限，只有一格是真衰退</h3>
+        <p>量增价减是内卷；量减价增是收缩中提价；量增价增是伪命题；<b>只有量减价减，才是真衰退</b>。</p>
+      </div>
+    </div>
+
+    <div class="thr-wrap">
+      <div class="thr-h"><h3>五档判定阈值</h3><span>可操作 · 但刻意严格</span></div>
+      <table class="thr">
+        <thead><tr><th scope="col">档位</th><th scope="col">条件（建议阈值）</th><th scope="col">在本语料里的含义</th></tr></thead>
+        <tbody>
+          <tr class="crash"><td>崩盘</td><td class="cond">量连续 3 年负增长且累计降幅 &gt;20%，价格分项连续 8 季度跑输 CPI，供给退出率 &gt;15%</td><td>三条齐备；88 个行业里只有婚育—教育链接近</td></tr>
+          <tr><td>衰退</td><td class="cond">上述三条满足两条</td><td>方向明确，但还没到“行业消失”</td></tr>
+          <tr><td>承压</td><td class="cond">只有一条满足，或量价背离（一涨一跌）超过 2 年</td><td>口语里的“崩了”大多停在这里</td></tr>
+          <tr><td>结构转移</td><td class="cond">旧载体收缩但新载体承接，且总量（旧+新）未降</td><td>需求没消失，只是换了地方</td></tr>
+          <tr><td>伪命题</td><td class="cond">量价供给三项均无恶化，或恶化幅度在正常周期波动内</td><td>“崩盘”与“历史新高”同时发生</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="method-close">口语里的“崩了”几乎从不满足三条阈值——<b>这正是它好用又不可证伪的原因。</b></p>
+  </section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <p class="f-k">FILES / 文件索引</p>
+        <ul class="f-list">
+          <li><a href="REPORT.md">REPORT.md</a><span class="d">88 行业统计与 27 行主榜</span></li>
+          <li><a href="FINAL.md">FINAL.md</a><span class="d">总报告：结论、核验、方法论</span></li>
+          <li><a href="VERIFY_FRAMEWORK.md">VERIFY_FRAMEWORK.md</a><span class="d">验证框架与五档阈值</span></li>
+          <li><a href="viz_payload.json">viz_payload.json</a><span class="d">本页全部数据的原始载荷</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-k">SOURCES / 数据来源</p>
+        <p class="f-p">民政部、国家统计局、教育部、公安部交管局、中汽协、中国汽车流通协会、金融监管总局，以及 A 股／港股上市公司年报与行业协会年报。核验逐条回查一手披露；代理指标只用于提出怀疑。</p>
+      </div>
+      <div>
+        <p class="f-k">SCOPE / 口径</p>
+        <p class="f-p">语料为知乎问题 2072237842227520188 的 120 条回答（API 报 122 条），去重后 85 条有效，抽出 88 个具体行业。每个行业只归入一种崩法；数字核验 34 条；量价反向验证 12 个行业。</p>
+      </div>
+    </div>
+
+    <p class="f-caveat">“无法核实的 6 条，含义是‘在当前可访问信源里找不到出处’，不等于造假。”</p>
+
+    <div class="f-bottom">
+      <span>生成于 2026-11-09 · 语料来自知乎问题 2072237842227520188</span>
+      <span>单文件 · 无外部依赖 · 离线可读</span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="data">{"industries":[{"industry":"婚庆","cluster":"A 婚育人口链","n_answers":8,"votes":635,"sev":{"崩盘":5,"明显收缩":3},"ev":{"数据":3,"纯观点":2,"个案/见闻":3},"has_data":true,"type":"量塌陷","avail":"open","indicator":"结婚登记对数（季度累计）","counter":"结婚登记对数连续 2 个季度同比正增长且全年站稳 700 万对以上","claim":"结婚人数12年腰斩叠加极简婚礼，头部品牌批量死亡","quote":"去年结婚的人变多了，但婚庆还是在批量死亡"},{"industry":"高等教育","cluster":"B 教育","n_answers":5,"votes":3580,"sev":{"严重衰退":2,"崩盘":1,"明显收缩":1,"局部承压":1},"ev":{"纯观点":4,"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"高考报名人数（年度）","counter":"高考报名人数维持在 1300 万以上高位（2025 年 1335 万），或民办高校招生计划完成率回升","claim":"生育率低致生源不足，老师断言大专迟早倒闭裁人","quote":"因为生育率太低了 迟早倒闭裁人"},{"industry":"婚纱摄影","cluster":"A 婚育人口链","n_answers":5,"votes":154,"sev":{"崩盘":3,"明显收缩":2},"ev":{"数据":2,"纯观点":2,"个案/见闻":1},"has_data":true,"type":"量塌陷","avail":"paid","indicator":"结婚登记对数（季度）＋婚纱摄影企业注吊销数","counter":"结婚对数回升且婚纱摄影企业净注册转正、门店数企稳","claim":"结婚对数腰斩，头部铂爵旅拍爆雷关店、员工讨薪","quote":"2025年夏天爆雷，门店陆续关停"},{"industry":"托育/幼儿园","cluster":"A 婚育人口链","n_answers":3,"votes":501,"sev":{"严重衰退":1,"崩盘":2},"ev":{"个案/见闻":1,"纯观点":1,"数据":1},"has_data":true,"type":"量塌陷","avail":"open","indicator":"幼儿园在园幼儿数（年度）","counter":"在园幼儿数同比降幅收窄至 2% 以内或转正；幼儿园所数止跌","claim":"2023年幼儿园减少1.48万所，在园幼儿少534万","quote":"2023年一年，全国幼儿园减少14808所"},{"industry":"月子中心","cluster":"A 婚育人口链","n_answers":3,"votes":140,"sev":{"严重衰退":2,"崩盘":1},"ev":{"数据":2,"纯观点":1},"has_data":true,"type":"量塌陷","avail":"open","indicator":"出生人口（年度）","counter":"出生人口连续 2 年回升（2024 年 954 万仅为单年龙年反弹，需 2025—2026 年连增才算）","claim":"出生人口下滑，月子中心隔一年才感到寒意","quote":"孩子少了，最先接到信号的是母婴店和月子中心"},{"industry":"民办学校","cluster":"B 教育","n_answers":3,"votes":107,"sev":{"崩盘":3},"ev":{"行业经验":1,"个案/见闻":1,"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"民办学校所数、民办在校生数","counter":"民办学校所数、在校生数企稳回升","claim":"综合高中愿读尽读且学费仅千元，抢走大部分生源","quote":"基本已经确定要崩盘了"},{"industry":"留学中介","cluster":"B 教育","n_answers":2,"votes":3751,"sev":{"崩盘":1,"明显收缩":1},"ev":{"纯观点":1,"个案/见闻":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"出国留学人员数（年度，待确认）","counter":"出国留学人数恢复增长（2023—2024 年已回暖）","claim":"获客成本上升、决策周期变长，信息透明与线上工具挤压","quote":"部分留学中介和语言培训机构面临获客成本上升"},{"industry":"母婴","cluster":"A 婚育人口链","n_answers":2,"votes":448,"sev":{"崩盘":1,"严重衰退":1},"ev":{"纯观点":1,"数据":1},"has_data":true,"type":"量塌陷","avail":"open","indicator":"出生人口（年度）","counter":"出生人口回升且母婴店单店营收、门店数企稳","claim":"出生人口下滑，母婴店需求随之收缩","quote":"孩子少了，最先接到信号的是母婴店和月子中心"},{"industry":"棋类培训","cluster":"B 教育","n_answers":2,"votes":403,"sev":{"崩盘":1,"明显收缩":1},"ev":{"行业经验":1,"个案/见闻":1},"has_data":false,"type":"供给出清","avail":"paid","indicator":"棋类培训机构注吊销数（企查查）","counter":"机构净注册转正、证书发放数回升","claim":"连锁机构收缩退场，信任崩塌，行业整体进入崩塌期","quote":"见证了疫情后整个围棋教育市场的崩塌"},{"industry":"商场/商业地产","cluster":"C 地产/基建后周期","n_answers":2,"votes":384,"sev":{"明显收缩":1,"崩盘":1},"ev":{"个案/见闻":2},"has_data":false,"type":"供给出清","avail":"open","indicator":"商业营业用房销售面积（月度累计同比）","counter":"商业营业用房销售面积同比转正、购物中心开业数与客流回升","claim":"商场与人口比例远超发达国家，客流被网购和连锁分流，年轻人不再逛","quote":"年轻人已经不转商场了，商场已经成为过时的情况"},{"industry":"家装","cluster":"C 地产/基建后周期","n_answers":2,"votes":362,"sev":{"局部承压":1,"明显收缩":1},"ev":{"个案/见闻":2},"has_data":false,"type":"量塌陷","avail":"open","indicator":"住宅竣工面积（月度累计）","counter":"住宅竣工面积、装潢材料零售额同比转正","claim":"板材销售额大幅下滑，拿货的全屋定制品牌接连倒闭","quote":"现在家装不好做，板材销售额比前些年少了好多"},{"industry":"建筑工程承包","cluster":"C 地产/基建后周期","n_answers":2,"votes":164,"sev":{"严重衰退":1,"崩盘":1},"ev":{"数据":1,"行业经验":1},"has_data":true,"type":"量塌陷","avail":"open","indicator":"建筑业新签合同额（季度累计）","counter":"新签合同额、房屋新开工面积同比转正","claim":"央国企营收利润双降、裁员设人才池，民企垫资被欠款拖死","quote":"建筑业的垮台央国企是重灾区"},{"industry":"公交","cluster":"D 财政/体制","n_answers":2,"votes":152,"sev":{"严重衰退":2},"ev":{"个案/见闻":1,"纯观点":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"城市公共汽电车客运量","counter":"公共汽电车客运量同比转正","claim":"财政只给换车钱，收入不够发工资，贷款发薪","quote":"公交车行业在西安这样的城市也快崩了"},{"industry":"服装零售","cluster":"F 传统零售/线下消费","n_answers":2,"votes":141,"sev":{"严重衰退":1,"明显收缩":1},"ev":{"纯观点":1,"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"限额以上服装鞋帽针纺织品类零售额同比；服装产量","counter":"零售额增速回正、运动户外细分增长","claim":"商场人流只剩餐饮和儿童业态，服装店店员多于顾客","quote":"服装店，只要进去，很多时候店员比客人多"},{"industry":"烟酒零售","cluster":"F 传统零售/线下消费","n_answers":2,"votes":125,"sev":{"严重衰退":2},"ev":{"个案/见闻":2},"has_data":false,"type":"量塌陷","avail":"open","indicator":"社零“烟酒类”零售额同比；卷烟产量；白酒产量","counter":"零售额增速回正、高端烟酒单价上涨","claim":"消费力下降，高档烟滞销、日营业额不破百，个体店利润被压缩","quote":"每天的营业额基本都不破百的，不论是烟、酒还是饮料，都卖不动"},{"industry":"烟草","cluster":"I 制造/外贸/农业","n_answers":2,"votes":105,"sev":{"明显收缩":2},"ev":{"纯观点":2},"has_data":false,"type":"量塌陷","avail":"open","indicator":"卷烟产量；单箱销售收入；工商税利","counter":"税利总额创新高、单箱销售收入上涨、高端烟占比提升","claim":"人口下降、老龄化、年轻人消费习惯改变致需求萎缩","quote":"烟草，人口在下降，老龄化，年轻人的消费习惯在改变"},{"industry":"钻戒","cluster":"A 婚育人口链","n_answers":2,"votes":99,"sev":{"严重衰退":2},"ev":{"数据":1,"纯观点":1},"has_data":true,"type":"量塌陷","avail":"open","indicator":"结婚登记对数（季度）＋钻石进口额","counter":"结婚对数回升且钻石进口额同比转正","claim":"求婚钻戒需求塌陷，营收三年缩至不足三分之一，一年净关店155家","quote":"三年时间，营收只剩不到三分之一，利润掉了九成六"},{"industry":"传统IT/软件","cluster":"E AI 冲击白领","n_answers":2,"votes":95,"sev":{"崩盘":1,"严重衰退":1},"ev":{"纯观点":2},"has_data":false,"type":"结构转移","avail":"open","indicator":"软件业从业人员数同比；软件业务收入÷从业人员（人均产出）","counter":"从业人员与收入同步增长、人均产出持平","claim":"AI替代从业者、产品价值缩水、总需求下降","quote":"传统 IT，互联网，软件，都已经悄悄崩盘"},{"industry":"兴趣教培","cluster":"B 教育","n_answers":2,"votes":88,"sev":{"明显收缩":1,"严重衰退":1},"ev":{"纯观点":2},"has_data":false,"type":"供给出清","avail":"paid","indicator":"非学科类校外培训机构注吊销数（企查查）","counter":"机构净注册转正、客单价企稳","claim":"AI一对一压低人工成本，靠低价获客的中小机构悄然关门","quote":"大量靠低价获客的中小机构悄无声息就关了门"},{"industry":"可AI化知识岗","cluster":"E AI 冲击白领","n_answers":2,"votes":66,"sev":{"严重衰退":1,"崩盘":1},"ev":{"数据":1,"纯观点":1},"has_data":true,"type":"量塌陷","avail":"paid","indicator":"如何操作性定义：文案/翻译/客服/初级设计/数据标注等“高文本密度、低决策权”岗位的招聘岗位数同比＋岗位平均薪资同比","counter":"岗位数持平、薪资增速仍高于CPI、企业仍在扩招同类岗","claim":"人头需求缩减叠加AI替代，入门级标准化岗位从两头被挤没","quote":"一整套“靠人做标准化处理”的中间层岗位"},{"industry":"驾校","cluster":"G 汽车","n_answers":2,"votes":56,"sev":{"严重衰退":1,"崩盘":1},"ev":{"数据":1,"纯观点":1},"has_data":true,"type":"量塌陷","avail":"open","indicator":"新增机动车驾驶人数量；驾校数量与单车招生","counter":"新增领证人数企稳、培训单价回升","claim":"适龄学车人群减少，新领证十年降43%，八成驾校不盈利","quote":"超八成仍不盈利，产能利用率平均仅有28.6%"},{"industry":"白酒","cluster":"I 制造/外贸/农业","n_answers":2,"votes":46,"sev":{"明显收缩":1,"崩盘":1},"ev":{"个案/见闻":1,"纯观点":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"白酒产量；规上白酒企业营收与利润；单吨价格","counter":"营收利润增长、高端批价企稳、库存去化","claim":"终端价从高位近腰斩，囤货升值逻辑反转，性价比彻底改写","quote":"某东售价距离巅峰期也快腰斩了"},{"industry":"酒店","cluster":"F 传统零售/线下消费","n_answers":2,"votes":46,"sev":{"崩盘":1,"严重衰退":1},"ev":{"纯观点":1,"行业经验":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"星级饭店RevPAR（平均房价×出租率）","counter":"RevPAR企稳、中端连锁入住率高于70%","claim":"高中低档全方位严重供大于求，但新增供给仍源源不断","quote":"酒店行业，无论高中低档全方位的严重供大于求"},{"industry":"美发","cluster":"F 传统零售/线下消费","n_answers":2,"votes":44,"sev":{"崩盘":1,"明显收缩":1},"ev":{"个案/见闻":2},"has_data":false,"type":"价塌陷","avail":"none","indicator":"美发门店数；单店月营收/客单价","counter":"门店数稳定、高端沙龙客单价上涨","claim":"高价办卡模式崩塌，10-20元快剪抢客，总监套餐打折甩卖","quote":"一个无法做线上却自己把自己干崩了的行业"},{"industry":"实体零售","cluster":"F 传统零售/线下消费","n_answers":2,"votes":32,"sev":{"严重衰退":2},"ev":{"行业经验":1,"个案/见闻":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"限额以上百货店零售额同比；连锁百强销售","counter":"便利店/会员店/折扣店增长、社零总额仍增","claim":"前置仓低价即时配送击穿价格体系，实体店卖不上价","quote":"这种模式直接击穿了所有实体零售业"},{"industry":"低端外贸加工","cluster":"I 制造/外贸/农业","n_answers":2,"votes":5,"sev":{"严重衰退":1,"明显收缩":1},"ev":{"个案/见闻":1,"纯观点":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"加工贸易出口额占比；对美出口份额；PMI新出口订单","counter":"一般贸易占比上升、跨境电商出口高增、出口总额创新高","claim":"三改一拆后家庭小作坊被迫进园区，要么拿钱退出，要么慢性死亡","quote":"要么搬进园区接受慢性死亡。"},{"industry":"建材","cluster":"C 地产/基建后周期","n_answers":2,"votes":1,"sev":{"明显收缩":2},"ev":{"纯观点":2},"has_data":false,"type":"量塌陷","avail":"open","indicator":"水泥产量（月度）","counter":"水泥产量、价格同比转正","claim":"产能过剩叠加订单缩减，利润崩塌，只能低价内卷","quote":"还有产能过剩的建材赛道"},{"industry":"基础教育","cluster":"B 教育","n_answers":1,"votes":3389,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"小学招生数（年度）","counter":"小学招生数、在校生数继续增长","claim":"托育、服从训练、知识速成三职能被AI与少工时削弱","quote":"学校的几乎所有职能都被削弱了"},{"industry":"地方事业单位/财政供养","cluster":"D 财政/体制","n_answers":1,"votes":1623,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"地方一般公共预算支出同比＋机关事业单位基本养老保险参保人数","counter":"地方支出增速回升、参保人数增长","claim":"人口流出、财政崩盘，三线以下事业单位5年内完蛋","quote":"很多三线城市及以下的各类事业单位，5年以内基本就要崩盘了"},{"industry":"饮料","cluster":"I 制造/外贸/农业","n_answers":1,"votes":482,"sev":{"严重衰退":1},"ev":{"纯观点":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"饮料产量；饮料制造业营收与利润；无糖茶增速","counter":"行业营收利润增长、无糖茶与功能饮料双位数增长","claim":"可乐冰红茶雪碧卖不动，核心消费人群改吃药","quote":"今年的可乐冰红茶雪碧根本卖不动啦"},{"industry":"双截棍培训","cluster":"B 教育","n_answers":1,"votes":466,"sev":{"严重衰退":1},"ev":{"行业经验":1},"has_data":false,"type":"供给出清","avail":"paid","indicator":"双截棍相关企业、社团注吊销数（企查查）","counter":"搜索指数、社团数企稳回升","claim":"高校社团纷纷倒闭，老辈高手淡出，辉煌不再","quote":"双节棍的辉煌几乎迅速消失"},{"industry":"钢琴培训","cluster":"B 教育","n_answers":1,"votes":362,"sev":{"明显收缩":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"钢琴产量（年度）","counter":"钢琴产量、考级人数同比转正","claim":"琴行销售承压、招生困难、老师学生减少、二手琴难流通","quote":"部分琴行销售承压，培训机构招生困难"},{"industry":"政务信息化","cluster":"D 财政/体制","n_answers":1,"votes":362,"sev":{"明显收缩":1},"ev":{"行业经验":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"政府采购网政务信息化项目中标金额（季度）","counter":"政务 IT 采购金额同比转正","claim":"新建项目减少、审批谨慎、付款周期拉长，回款与维护预算承压","quote":"新建项目都减少，项目审批更加谨慎，付款周期拉长"},{"industry":"房地产中介","cluster":"C 地产/基建后周期","n_answers":1,"votes":362,"sev":{"明显收缩":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"商品房销售面积（月度累计）＋二手房成交套数","counter":"二手房成交套数同比转正、门店数企稳","claim":"成交转弱佣金下滑，部分门店大量关闭、人员流动加大","quote":"部分中介门店大量关闭，行业人员流动加大"},{"industry":"传统旅行社","cluster":"J 专业服务","n_answers":1,"votes":362,"sev":{"明显收缩":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"旅行社数量；组织接待人次；出境游人次","counter":"国内游人次创新高、定制游与小团客单价上升","claim":"在线平台与社交媒体分流客源，标准化产品陷低价竞争","quote":"部分传统旅行社门店和依赖传统获客方式的经营者面临客源分流"},{"industry":"平面模特","cluster":"E AI 冲击白领","n_answers":1,"votes":303,"sev":{"明显收缩":1},"ev":{"个案/见闻":1},"has_data":false,"type":"价塌陷","avail":"none","indicator":"电商模特图外包单张均价；童模/服装模特通告量","counter":"报价稳定、品牌实拍需求回升","claim":"电商改AI作图，童模订单被极低成本替代","quote":"这个行业的一角就已经开始崩塌了"},{"industry":"信用卡","cluster":"H 金融","n_answers":1,"votes":239,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"信用卡和借贷合一卡在用发卡量；逾期半年未偿信贷总额","counter":"发卡量企稳、活卡率与卡均消费回升","claim":"银行基本放弃信用卡业务，禁暴力催收后欠款收不回","quote":"信用卡行业已经崩了现在各大银行基本放弃信用卡业务了"},{"industry":"包养","cluster":"F 传统零售/线下消费","n_answers":1,"votes":227,"sev":{"明显收缩":1},"ev":{"纯观点":1},"has_data":false,"type":"量塌陷","avail":"none","indicator":"夜场/歌舞娱乐场所数量；单身男性可选消费","counter":"娱乐场所数量稳定、高端夜场满房","claim":"需求侧萎缩、供给侧膨胀，行业越来越卷，几年内将打价格战","quote":"体制内更是在严打，需求侧萎缩。"},{"industry":"中专","cluster":"B 教育","n_answers":1,"votes":208,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"中等职业教育在校生数（年度）","counter":"中职在校生数、招生数企稳回升","claim":"作者所在地的中专学校这两年陆续被拆得差不多了","quote":"直接崩到我这地方的中专学校基本上这两年全都陆续给拆差不多了"},{"industry":"售电","cluster":"D 财政/体制","n_answers":1,"votes":150,"sev":{"崩盘":1},"ev":{"数据":1},"has_data":true,"type":"供给出清","avail":"open","indicator":"售电公司注销、退市数量（省级电力交易中心公示）","counter":"售电公司数量企稳、度电价差扩大","claim":"售电公司大面积亏损退市，广西广东亏损面过半","quote":"2025年，超3200家售电公司推出市场，退市率接近60%"},{"industry":"画师","cluster":"E AI 冲击白领","n_answers":1,"votes":97,"sev":{"严重衰退":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"none","indicator":"游戏/动画美术外包单价；美术外包订单数","counter":"头部原画/概念设计单价上涨、游戏美术岗位数稳定","claim":"绘画AI一学就会，画师是最快被淘汰的一批，却仍自称不会崩","quote":"他们明明是被最快淘汰的那一批"},{"industry":"程序员","cluster":"E AI 冲击白领","n_answers":1,"votes":97,"sev":{"严重衰退":1},"ev":{"纯观点":1},"has_data":false,"type":"结构转移","avail":"paid","indicator":"初级开发岗岗位数同比；程序员岗位平均薪资；软件业人均产出","counter":"校招量价齐稳、软件业从业人数创新高","claim":"大公司不再招程序员、维护交由AI解决，程序员是最慢被淘汰但同样会崩","quote":"他们是被最慢淘汰的那一批"},{"industry":"二手车","cluster":"G 汽车","n_answers":1,"votes":93,"sev":{"崩盘":1},"ev":{"行业经验":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"二手车交易量；二手车成交均价；车商毛利率","counter":"均价企稳、库存周期低于30天、毛利率回升","claim":"缺国标约束，调表车事故车同价竞争，正规车商被成本和劣币挤死","quote":"二手车行业崩盘了"},{"industry":"汽车","cluster":"G 汽车","n_answers":1,"votes":92,"sev":{"严重衰退":1},"ev":{"行业经验":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"乘用车零售量；经销商库存预警指数；单车成交均价/终端折扣率","counter":"折扣收窄、库存预警低于50%、单车利润转正","claim":"内卷降价降质、赔本卖车，销量靠堆新车，车企整合重组在即","quote":"实际是内卷到死，各种降本增笑降质"},{"industry":"娱乐造星","cluster":"E AI 冲击白领","n_answers":1,"votes":89,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"电视剧备案数；横店开机剧组数；艺人经纪公司注销量","counter":"短剧/演唱会/直播打赏规模上升，艺人总收入未降","claim":"影视寒冬、营销预算削减，明星高定与置装费大幅缩水","quote":"娱乐与时尚包装行业，现在资金链正在悄悄崩盘"},{"industry":"民营骨科医院","cluster":"Z 医疗","n_answers":1,"votes":89,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"骨科高值耗材集采均价；民营骨科医院数量；骨科手术量","counter":"手术量增长、医院转向康复/疼痛/日间手术、单院收入企稳","claim":"与造星业同逻辑，靠信息差和高溢价，潮水退去即裸泳","quote":"这和民营骨科医院、口腔诊所、4S店的崩盘，逻辑是一模一样的"},{"industry":"民营口腔/医美","cluster":"Z 医疗","n_answers":1,"votes":89,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"种植牙集采价；医美客单价；民营口腔/医美机构数","counter":"诊疗人次增长、复购率提升、连锁化率上升","claim":"集采压价、价格透明，靠暴利支撑的机构失去造血能力","quote":"集采一压，价格一透明，那些靠暴利支撑的机构瞬间失去造血能力"},{"industry":"豪华车4S店","cluster":"G 汽车","n_answers":1,"votes":89,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"豪华品牌在华销量；4S店退网数；单车终端优惠","counter":"销量企稳、终端价回升、门店盈利面高于60%","claim":"消费降级叠加电车价格战，加价与金融手续费模式失效","quote":"传统渠道直接被倒贴卖车逼入死角"},{"industry":"数码集合店","cluster":"F 传统零售/线下消费","n_answers":1,"votes":88,"sev":{"明显收缩":1},"ev":{"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"通讯器材类零售额；3C连锁门店数","counter":"通讯器材零售额受换机与国补驱动高增、单店营收回升","claim":"存储芯片成本暴涨叠加线上比价，线下门店利润被挤没","quote":"不少店悄咪咪就撤了柜"},{"industry":"新车路试","cluster":"G 汽车","n_answers":1,"votes":82,"sev":{"明显收缩":1},"ev":{"行业经验":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"新车公告数；汽车检测试验服务收入","counter":"新车上市数创新高、中国汽研检测收入增长","claim":"加拿大车企改用AI仿真路试，实车路试需求被直接替代","quote":"不用上路直接ai路试"},{"industry":"集邮","cluster":"F 传统零售/线下消费","n_answers":1,"votes":68,"sev":{"崩盘":1},"ev":{"数据":1},"has_data":true,"type":"量塌陷","avail":"open","indicator":"集邮业务量/收入；新邮预订量；邮票打折率","counter":"业务量企稳、老纪特拍卖价创新高","claim":"玩家从两三千万萎缩至三百万，在册仅112万","quote":"2300万（甚至3000万）玩家。现在最多300万。"},{"industry":"体育分析咨询","cluster":"E AI 冲击白领","n_answers":1,"votes":59,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"体育服务业中体育咨询/数据分析营业收入；相关岗位数","counter":"体育产业总规模与体育服务业增加值仍双位数增长","claim":"比赛录像喂给AI即可输出对手优劣与战术建议，替代付费教练分析","quote":"体育顾问/分析咨询行业，快被AI干崩盘了"},{"industry":"广告策划","cluster":"E AI 冲击白领","n_answers":1,"votes":57,"sev":{"明显收缩":1},"ev":{"纯观点":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"广告业营业收入；广告业从业人数；互联网广告占比","counter":"广告业营收与从业人数同步增长","claim":"广告业从人力密集型转为AI化，人力需求塌缩","quote":"广告业，策划业过去是人力密集型的 现在是AI化的"},{"industry":"知乎","cluster":"F 传统零售/线下消费","n_answers":1,"votes":55,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"MAU；付费会员数；广告收入","counter":"MAU企稳、付费会员与ARPU双升、经调整净利转正","claim":"股价暴跌、股民论坛无人讨论，一两年内或退市","quote":"股价跌到连股民论坛都死水化了"},{"industry":"传统行业","cluster":"K 泛化判断","n_answers":1,"votes":52,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"如何操作性定义：规上工业中传统产业（纺织/钢铁/建材/家电）增加值占比与就业占比","counter":"传统产业经技改与出海维持份额、增加值增速回正","claim":"作者断言能接触到的所有传统行业都已崩盘","quote":"你能接触到的所有传统行业"},{"industry":"加密货币","cluster":"H 金融","n_answers":1,"votes":44,"sev":{"局部承压":1},"ev":{"数据":1},"has_data":true,"type":"供给出清","avail":"open","indicator":"全球现货与合约成交量；香港持牌平台数；USDT场外溢价","counter":"全球成交与稳定币市值创新高、香港牌照扩容","claim":"全行业总市值还不到英伟达一家公司市值的一半，规模已明显缩水","quote":"全世界整个加密货币的总市值，还没英伟达市值的一半高。"},{"industry":"中小学教师","cluster":"A 婚育人口链","n_answers":1,"votes":42,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"小学专任教师数（年度）＋教师招聘岗位数","counter":"教师招聘岗位数同比增加、小学在校生数继续增长","claim":"被作者列为已崩盘行业，未展开具体机制","quote":"育儿幼师小学老师"},{"industry":"奢侈消费","cluster":"F 传统零售/线下消费","n_answers":1,"votes":26,"sev":{"严重衰退":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"中国内地个人奢侈品市场规模同比；亚太区销售额","counter":"高净值客群消费企稳、品牌正价店同店转正","claim":"非必需品消费全面萎缩，只有必需品消费能活下来","quote":"只有必需品消费能够活下来"},{"industry":"非必需消费","cluster":"F 传统零售/线下消费","n_answers":1,"votes":26,"sev":{"严重衰退":1},"ev":{"纯观点":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"可选消费分项（化妆品＋金银珠宝＋体育娱乐用品）零售额增速减必需消费增速","counter":"可选增速回升、服务消费占比上升","claim":"商K、按摩、餐馆等非必需服务消费被判定难以存活，仅必需品消费留存","quote":"所有不是必需品的消费，比如商k，按摩，餐馆。"},{"industry":"早期AI应用","cluster":"E AI 冲击白领","n_answers":1,"votes":22,"sev":{"严重衰退":1},"ev":{"个案/见闻":1},"has_data":false,"type":"供给出清","avail":"paid","indicator":"AI企业注吊销数减新注册数；AI一级市场融资额","counter":"生成式AI新注册与融资反弹","claim":"扣子烧钱见底并入豆包，画布式工作流被自然语言取代","quote":"烧了10个亿烧不动了，产品线并入豆包"},{"industry":"消防维保","cluster":"D 财政/体制","n_answers":1,"votes":17,"sev":{"崩盘":1},"ev":{"行业经验":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"消防技术服务机构数量（备案）","counter":"机构数量与维保合同额增长","claim":"资质放开后公司暴增、压价到极低，改造升级收入归零致倒闭","quote":"大量的维保公司倒闭"},{"industry":"非体力行业","cluster":"K 泛化判断","n_answers":1,"votes":16,"sev":{"严重衰退":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"如何操作性定义：白领岗位数（非体力）÷总就业＝专业技术人员＋办事人员占比","counter":"白领岗位占比继续上升、服务业就业吸纳增强","claim":"AI已能生成遗照等，除纯体力劳动外多数行业都被降维打击","quote":"除了纯体力工作，剩下的大多数行业都在降维打击了"},{"industry":"宠物","cluster":"F 传统零售/线下消费","n_answers":1,"votes":14,"sev":{"崩盘":1},"ev":{"数据":1},"has_data":true,"type":"结构转移","avail":"open","indicator":"宠物行业市场规模；单只宠物年均消费；宠物数量","counter":"宠物数量与单宠消费双升、国产替代加速","claim":"上市公司利润集体暴跌，犬猫数量增速降至1.8%","quote":"宠物行业悄悄崩盘"},{"industry":"律师","cluster":"J 专业服务","n_answers":1,"votes":13,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"律师人数；律所数量；青年律师起薪与人均创收","counter":"律师人数与创收同步增长、高端非诉业务涨价","claim":"仅凭个人感觉断言律师业已崩盘，未给依据","quote":"我感觉律师行业正在（已经）悄悄崩盘"},{"industry":"消杀","cluster":"J 专业服务","n_answers":1,"votes":12,"sev":{"明显收缩":1},"ev":{"行业经验":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"病媒生物防制服务采购额；消毒剂产量","counter":"创卫与登革热防控带来新增招标、食品工厂虫害防治常态化","claim":"口罩后从业者暴增，内卷到新入行没机会","quote":"短短几年就内卷到根本没机会了"},{"industry":"银行客户经理","cluster":"H 金融","n_answers":1,"votes":10,"sev":{"崩盘":1},"ev":{"行业经验":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"银行业网点数；客户经理人数；单网点产能","counter":"网点总数企稳、财富管理岗位扩张","claim":"经营贷放出即成坏账，客户经理从抢客户变成高危岗位","quote":"客户经理这个职业也崩盘了"},{"industry":"公共部门咨询","cluster":"D 财政/体制","n_answers":1,"votes":9,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"政府采购网“咨询服务”类采购公告数、金额","counter":"咨询类采购金额同比转正","claim":"仅一行点名该业务，正文无任何展开或依据","quote":"对公共部门的咨询业务"},{"industry":"造船","cluster":"I 制造/外贸/农业","n_answers":1,"votes":9,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"造船完工量、新接订单、手持订单；全球份额","counter":"三大指标全球份额高于50%、手持订单创新高、船价指数上涨","claim":"仅点名造船并预言崩盘，未给出任何依据","quote":"造船！这篇回答放这，等着瞧。"},{"industry":"ATM存取款机","cluster":"H 金融","n_answers":1,"votes":6,"sev":{"严重衰退":1},"ev":{"行业经验":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"ATM机具数量；每万人ATM数；银行卡取现笔数","counter":"ATM数量企稳、适老化改造带来新增","claim":"移动支付普及后现金使用骤减，ATM撤机、银行网点收缩，行业需求端塌陷","quote":"支付宝推广以后，用现金的少了，别说ATM了好多银行网点都撤了。"},{"industry":"大型商超","cluster":"C 地产/基建后周期","n_answers":1,"votes":5,"sev":{"局部承压":1},"ev":{"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"限额以上超市、百货店零售额同比","counter":"超市零售额增速回升、同店销售转正","claim":"性价比竞争下大型商超与家庭超市生存困难","quote":"讲情怀没用，要讲性价比"},{"industry":"餐饮","cluster":"F 传统零售/线下消费","n_answers":1,"votes":5,"sev":{"严重衰退":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"餐饮收入同比；限额以上餐饮收入÷门店数（客单价）","counter":"餐饮收入仍增长、连锁化率提升、单店回本周期缩短","claim":"小吃店和大酒店都面临生存危机，平台挤压","quote":"小吃店和大酒店都面临着生存危机"},{"industry":"小商小贩","cluster":"F 传统零售/线下消费","n_answers":1,"votes":5,"sev":{"严重衰退":1},"ev":{"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"个体工商户数量与注销数；个体就业人员","counter":"个体户数量仍增、地摊与夜市政策放松","claim":"各类小商小贩被互联网和大型生鲜超市碾压","quote":"各种各样的都面临着生存危机"},{"industry":"早餐店","cluster":"F 传统零售/线下消费","n_answers":1,"votes":5,"sev":{"明显收缩":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"none","indicator":"早餐门店数；早餐客单价（无独立统计）","counter":"早餐订单量增长、连锁品牌扩张","claim":"人口老龄化，早餐店大部分惨淡经营","quote":"早餐店生意大部分都在惨淡经营"},{"industry":"二手相机","cluster":"F 传统零售/线下消费","n_answers":1,"votes":5,"sev":{"崩盘":1},"ev":{"数据":1},"has_data":true,"type":"价塌陷","avail":"none","indicator":"二手相机成交均价；挂牌量；新机出货","counter":"均价企稳、热门机型溢价、成交量上升","claim":"全画幅二手价普遍腰斩，千元以下机型超十款，镜头中崩","quote":"全画幅相机二手价格大崩，普遍暴跌一半或者三分之二"},{"industry":"夜店","cluster":"F 传统零售/线下消费","n_answers":1,"votes":4,"sev":{"局部承压":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"歌舞娱乐场所数量；营业性演出场次","counter":"Livehouse/音乐节/小剧场场次增长、夜间经济总规模上升","claim":"沉寂一年的旧客重新联系，反映夜店客流与生意冷清","quote":"昨天收到好几个一年前加微信的妹妹说想我了"},{"industry":"电缆","cluster":"I 制造/外贸/农业","n_answers":1,"votes":2,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"电线电缆行业营收与利润；国网中标金额；铜价","counter":"特高压/海风招标放量、龙头毛利率回升","claim":"靠压榨员工内卷维持，强制12小时两班倒、缴最低社保，老板家族套现数十亿","quote":"电缆行业快崩盘了，现在企业对待员工就像奴隶一样"},{"industry":"保险","cluster":"H 金融","n_answers":1,"votes":1,"sev":{"严重衰退":1},"ev":{"行业经验":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"保险代理人数量；保费收入；人均新单保费","counter":"保费收入增长、人均新业务价值提升、代理人数量企稳","claim":"寿险基层代理人大量离职，代理公司减员，企业团险停保，全行业向下","quote":"寿险行业疫情后就大量基层代理人离职"},{"industry":"考公考研培训","cluster":"B 教育","n_answers":1,"votes":1,"sev":{"崩盘":1},"ev":{"数据":1},"has_data":true,"type":"结构转移","avail":"open","indicator":"考研报名人数（年度）＋国考报名过审人数","counter":"考研报名止跌回升、国考报名继续增长","claim":"报名人数创新高但付费人数减少，头部机构营收利润双降、退费难、门店关停","quote":"一边是报名人数创历史新高，一边是头部机构营收利润双降"},{"industry":"养殖业","cluster":"I 制造/外贸/农业","n_answers":1,"votes":1,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"生猪出栏价；能繁母猪存栏；猪粮比","counter":"猪价回升、规模化率提升、龙头成本低于14元/kg","claim":"螃蟹价从十年前140元跌到40元，肉鸡跌到5元一斤，价格体系塌陷","quote":"下一个蹦飞的就是养殖业和种植业"},{"industry":"种植业","cluster":"I 制造/外贸/农业","n_answers":1,"votes":1,"sev":{"崩盘":1},"ev":{"个案/见闻":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"农产品批发价格200指数；三大主粮收购价；种植面积","counter":"粮食产量创新高、最低收购价托底、种粮补贴加码","claim":"菜价低到烂根喷色仍上市，大白菜6毛一斤，种菜挣不到钱","quote":"下一个蹦飞的就是养殖业和种植业"},{"industry":"AI算力中心","cluster":"E AI 冲击白领","n_answers":1,"votes":0,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"价塌陷","avail":"open","indicator":"智能算力规模（EFLOPS）；GPU月租价格；机架上架率","counter":"上架率高于80%、租赁价企稳、订单排期延长","claim":"全球算力中心全部巨亏，收入不够维护费，靠融资烧钱，泡沫将破","quote":"全世界的AI算力中心、AI大型软件公司，有一个算一个，全部巨额亏损"},{"industry":"AI软件公司","cluster":"E AI 冲击白领","n_answers":1,"votes":0,"sev":{"崩盘":1},"ev":{"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"AI软件企业营收增速；毛利率；注吊销数","counter":"头部AI软件ARR翻倍、毛利率高于60%","claim":"大型AI软件公司全部巨额亏损、资不抵债，融资断掉就会倒闭","quote":"有一个算一个，全部巨额亏损，连成本都收不回来"},{"industry":"编制教师","cluster":"D 财政/体制","n_answers":1,"votes":0,"sev":{"局部承压":1},"ev":{"纯观点":1},"has_data":false,"type":"供给出清","avail":"open","indicator":"事业单位公开招聘教师岗位数（年度累计）","counter":"教师招聘岗位数同比增加","claim":"仅点名该群体正在崩盘，未展开说明具体表现或机制","quote":"事业单位编制的教师"},{"industry":"电商","cluster":"E AI 冲击白领","n_answers":1,"votes":0,"sev":{"局部承压":1},"ev":{"纯观点":1},"has_data":false,"type":"结构转移","avail":"open","indicator":"实物商品网上零售额；店铺数；单店GMV","counter":"网上零售额仍双位数增长、单店GMV稳定","claim":"开网店引流维护成本已不低于实体店，十进九亏，价格优势消失","quote":"电商一般人十个进九个凉的悄无声息"},{"industry":"大型玩具","cluster":"F 传统零售/线下消费","n_answers":1,"votes":0,"sev":{"严重衰退":1},"ev":{"个案/见闻":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"玩具出口额；传统玩具国内零售；潮玩增速","counter":"潮玩/谷子/拼搭类增长、行业总规模上升","claim":"幼儿园与地产客户萎缩、垫资收不回，玩具厂成批倒闭，老板成老赖","quote":"玩具厂欠钱不还，纷纷倒闭"},{"industry":"贷款中介","cluster":"H 金融","n_answers":1,"votes":0,"sev":{"崩盘":1},"ev":{"数据":1},"has_data":true,"type":"供给出清","avail":"paid","indicator":"贷款中介/助贷机构数量；融资担保在保余额；银行消费贷增速","counter":"银行零售信贷投放回升、合规助贷集中度提升","claim":"月放款从1亿跌到3000万，银行切割合作，从业者大批转行送外卖","quote":"现在每月只有3000万左右，腰斩后再腰斩"},{"industry":"真人影视","cluster":"E AI 冲击白领","n_answers":1,"votes":0,"sev":{"局部承压":1},"ev":{"纯观点":1},"has_data":false,"type":"量塌陷","avail":"open","indicator":"电视剧备案数；电影观影人次；长剧开机数","counter":"微短剧/演出市场规模上升，影视公司营收未降","claim":"AI视频在表演与场景上形成替代，真人剧集电影面临全面洗牌","quote":"很快就会全面受到AI视频冲击，迎来行业洗牌"},{"industry":"图文广告","cluster":"E AI 冲击白领","n_answers":1,"votes":0,"sev":{"明显收缩":1},"ev":{"纯观点":1},"has_data":false,"type":"量塌陷","avail":"paid","indicator":"报纸广告收入；印刷业营业收入","counter":"包装印刷/数字印刷增长、行业总营收企稳","claim":"线上宣传与AI作图冲击，宣传单、展板订单变少，利润极薄","quote":"宣传单、展板订单变少，利润薄到可怜"}],"clusters":{"A 婚育人口链":7,"B 教育":10,"C 地产/基建后周期":6,"D 财政/体制":7,"F 传统零售/线下消费":18,"I 制造/外贸/农业":8,"E AI 冲击白领":14,"G 汽车":5,"J 专业服务":3,"H 金融":6,"Z 医疗":2,"K 泛化判断":2},"types":{"量塌陷":38,"供给出清":17,"结构转移":15,"价塌陷":18},"avail":{"open":73,"paid":9,"none":6},"verify":[{"id":"D01-1","industry":"婚庆","claim":"676.3 万对","actual":"676.3 万对（同期离婚登记 274.3 万对）","verdict":"证实","note":"表内脚注：带“*”指标是本年截至统计期的累计数，故 4 季度数即全年数。","source":"民政部《2025年4季度民政统计数据》"},{"id":"D01-2","industry":"婚庆","claim":"+10.8%","actual":"+10.76%（676.3 / 610.6 - 1）","verdict":"证实","note":"四舍五入到一位小数一致；增量 65.7 万对。","source":"民政部《2025年4季度民政统计数据》《2024年4季度民政统计数据》"},{"id":"D01-3","industry":"婚庆","claim":"1346.9 万对","actual":"1346.9 万对（比上年增长 1.8%，粗结婚率 9.9‰）","verdict":"证实","note":"原文：“共依法办理结婚登记 1346.9 万对，比上年增长 1.8%”。","source":"民政部《2013年社会服务发展统计公报》"},{"id":"D01-4","industry":"婚庆","claim":"610.6 万对","actual":"610.6 万对（同期离婚登记 262.1 万对）","verdict":"证实","note":"2013→2024 由 1346.9 万对降至 610.6 万对，减少 736.3 万对，降幅 54.7%，“12 年腰斩”成立且略被低估。","source":"民政部《2024年4季度民政统计数据》"},{"id":"D01-5","industry":"婚庆","claim":"474.7 万对","actual":"464.8 万对（同期离婚登记 208.2 万对）","verdict":"证伪","note":"答主高报 9.9 万对（+2.13%）。官方为年初至 3 季度末累计数；2026 年全年数据尚未公布（预计 2027 年 2 月前后）。","source":"民政部《2026年3季度民政统计数据》"},{"id":"D02-1","industry":"月子中心","claim":"792 万","actual":"792 万人，出生率 5.63‰，年末人口 140489 万（比上年末减少 339 万）","verdict":"证实","note":"公报正文与出生率、人口总量自洽。","source":"国家统计局《2025年国民经济和社会发展统计公报》"},{"id":"D02-2","industry":"月子中心","claim":"少 162 万","actual":"954 万（2024）− 792 万（2025）= 162 万","verdict":"证实","note":"2024 年公报：出生人口 954 万，出生率 6.77‰。","source":"国家统计局 2025 年、2024 年统计公报"},{"id":"D02-3","industry":"月子中心","claim":"1883 万","actual":"1786 万（出生率 12.95‰）","verdict":"证伪","note":"高报 97 万（+5.4%）。统计局口径 2015=1655、2016=1786、2017=1723，1883 万不属任何官方年度口径。2016→2023 实际降幅 1786→902 为 -49.5%，仍近腰斩，定性结论不受影响。","source":"国家统计局《2016年国民经济和社会发展统计公报》"},{"id":"D02-4","industry":"月子中心","claim":"902 万","actual":"902 万人，出生率 6.39‰","verdict":"证实","note":"与 2025 年 792 万、2024 年 954 万构成连续可比序列。","source":"国家统计局《2023年国民经济和社会发展统计公报》"},{"id":"D03-1","industry":"幼儿园","claim":"14808 所","actual":"全国幼儿园 27.44 万所，比上年减少 14808 所，下降 5.12%","verdict":"证实","note":"公报指标为“园所数比上年减少”，含撤并、停办、转制，无“关停”字段；答主“关停”为口语转写。","source":"教育部《2023年全国教育事业发展统计公报》"},{"id":"D03-2","industry":"幼儿园","claim":"534 万","actual":"在园幼儿 4092.98 万人，比上年减少 534.57 万人，下降 11.55%","verdict":"证实","note":"普惠性幼儿园在园 3717.01 万人，减少 427.03 万人。","source":"教育部《2023年全国教育事业发展统计公报》"},{"id":"D03-3","industry":"幼儿园","claim":"七百多万","actual":"减少 712.23 万（2021 年 4805.21 万 → 2022 年 4627.55 万 → 2023 年 4092.98 万）","verdict":"证实","note":"拆分为 2022 年 -177.66 万 + 2023 年 -534.57 万；若误读为“2023 一年少七百多万”则不成立（一年为 534.57 万）。","source":"教育部 2021 年、2023 年全国教育事业发展统计公报"},{"id":"D03-4","industry":"幼儿园","claim":"一万一千多所","actual":"民办幼儿园 14.95 万所，比上年减少 11013 所；在园幼儿 1791.62 万人，减少 335.15 万人","verdict":"证实","note":"减少数含民办转公办/转普惠等转制情形，公报未拆分，“关停”为过度解读。","source":"教育部《2023年全国教育事业发展统计公报》"},{"id":"D04-1","industry":"月子中心","claim":"417 家","actual":"媒体口径：近 5 年“注销、吊销、撤销”的月子中心相关企业合计 417 家（无机构署名、无原始工商导出）","verdict":"部分证实","note":"仅媒体转述，未见原始口径。答主原话即“注销、吊销、撤销”，未失真，但三种法律状态混计会把行政处罚算作主动退出；无法独立复核。","source":"腾讯新闻《天价月子中心，告别黄金时代》（原文称“相关数据显示”；南方周末 2026-10-13 归为中国新闻周刊调查）"},{"id":"D04-2","industry":"月子中心","claim":"81.5% → 7.5%","actual":"未找到任何对应数据（无报告、无报道、无工商导出）","verdict":"无法核实","note":"无原始出处。未标明指标（企业注册量增速/市场规模增速/渗透率）、年份与机构，多轮检索零命中，建议整体不予引用。","source":"无（企查查/天眼查/艾媒/前瞻公开页面均未命中）"},{"id":"D05-1","industry":"婚纱摄影","claim":"连续 31 次","actual":"天眼查：截至 2026-06-22，铂爵旅拍连续 31 次被列为被执行人","verdict":"部分证实","note":"仅媒体转述第三方数据；中国执行信息公开网查询需验证码，未能直接取证。31 次为“被执行人”记录数，与“失信被执行人”是不同口径。","source":"澎湃新闻《铂爵旅拍成“老赖”，线下门店全部关停》（引天眼查、中国执行信息公开网）"},{"id":"D05-2","industry":"婚纱摄影","claim":"2.19 亿元（累计）","actual":"“近一年”累计被执行金额 2.19 亿元；其中 22 项案件共 1.64 亿元未偿还，最高单项 0.78 亿元","verdict":"部分证实","note":"金额对，但“累计”实为“近一年”，属口径错位：历史全部被执行总额未公开，读者易误读为历史累计欠款 2.19 亿。","source":"澎湃新闻（引天眼查）"},{"id":"D05-3","industry":"婚纱摄影","claim":"门店陆续关停、品牌失联","actual":"线下门店全部关停、线上停止运营、256 名员工仲裁；失信记录 1 条（房屋租赁合同纠纷，执行标的 63.09 万元），实控人许春盛被限制高消费","verdict":"证实","note":"“失联”为消费者与员工描述（客服不通、退款无门），非官方认定；注意失信标的仅 63.09 万元，与 2.19 亿元被执行金额量级相差约 300 倍。","source":"澎湃新闻（引中国执行信息公开网、天眼查）"},{"id":"D06-1","industry":"钻戒","claim":"46.23 亿 → 14.82 亿","actual":"2021 年 4,622,729,780.48 元 → 2024 年 1,482,423,153.98 元（同比 -32.01%），降 67.9%，为 2021 年的 32.1%","verdict":"证实","note":"数字全对，但基年为 2021（上市首年、净利同比 +131.09% 的高点），跨度是三个完整年度；2025 年营收已回升至 15.20 亿元（+2.54%），“持续下滑”叙事在 2025 年中断。","source":"迪阿股份 2021 年、2024 年年度报告（巨潮资讯）"},{"id":"D06-2","industry":"钻戒","claim":"13.02 亿 → 5303 万","actual":"2021 年归母净利 1,301,768,398.86 元 → 2024 年 53,029,532.69 元（同比 -23.10%），降 95.9%","verdict":"证实","note":"“利润掉九成六”成立于 2021→2024 的跨期比较，不是同比；2024 年净利同比仅 -23.10%，跌幅小于营收(-32.01%)，说明收缩中利润率反而改善。","source":"迪阿股份 2021 年、2024 年年度报告（巨潮资讯）"},{"id":"D06-3","industry":"钻戒","claim":"净关店 155 家","actual":"2024 年新开 17 家、关闭 172 家，净减少 155 家，期末门店 373 家","verdict":"证实","note":"“净关店”用词准确（172 关 - 17 开）；若被二次转述为“关店 155 家”会低估实际闭店强度。","source":"迪阿股份 2024 年年度报告（巨潮资讯）"},{"id":"D07-1","industry":"婚庆","claim":"三地 2025 年集中关停","actual":"上海：2025-06-19 上海媒体报道资金链断裂、百对新人上千万费用打水漂；杭州：拱墅店 2025-06 关门、滨江店停业、萧山店易主；南京：雨花台店 2025-11-01 起闭店，《暂停营业告知》称欠供应商 750 余万、合计债务 1000 万，停业至 2025-11-30，负责人失联，雨花台区市监局介入但无法核实","verdict":"证实","note":"事实有多家媒体实地报道；但无官方公告、无破产/清算裁定公开，可查的准官方痕迹是天眼查显示沪杭主体已列失信、限高、数百件司法案件 95% 以上为被告。报道集中于沪杭宁，“全国崩盘”缺乏证据。","source":"绍兴网 2025-07-03；扬子晚报/紫牛新闻 2025-11-03（搜狐转载）"},{"id":"D08-1","industry":"婚庆","claim":"-65%","actual":"无任何招聘平台官方报告；仅职友集（jobui）搜索摘要称“婚礼策划 2025 较 2024 下降 68%”，页面需验证码未能取证","verdict":"无法核实","note":"无原始出处。招聘平台“职位数”受发布量、去重规则、付费置顶影响，不等于招聘量；且 68%≠65%，属二次取整改写，不应引用。","source":"无（职友集 jobui 摘要，未取证）"},{"id":"D09-1","industry":"婚宴餐饮","claim":"-67.65%","actual":"归母净利 16,763,874.28 元 vs 上年同期 51,821,946.73 元，同比 -67.65%；扣非 15,673,180.35 元（-67.18%）","verdict":"证实","note":"同期营业收入 717,322,014.88 元，同比 +3.64%，属“增收不增利”，不是营收利润双降；单季波动大，不宜据此判断需求崩盘。","source":"同庆楼 2026 年第一季度报告（上交所/巨潮资讯）"},{"id":"C23","industry":"驾校（机动车驾驶培训）","claim":"3613 万→2051 万（-43%）；1.8 万家；>80% 不盈利；产能利用率 28.6%","actual":"2015 年新领驾驶证 3613.3 万人（公安部交管局）；2025 年 2051 万未能取得原文，按 3613→2051 计算降幅为 43.2%，与答主自述一致；全国驾培机构约 1.8 万户（交通运输部统计公报口径，量级可信）；'超八成不盈利'与'产能利用率 28.6%'无任何官方或协会公开口径，驾培行业亦无'产能利用率'统计制度","verdict":"部分证实","note":"起点值 3613 万可信（公安部 2016 年 1 月通报，当年驾驶人总量 3.27 亿）；终点值 2051 万与降幅 43.2% 内部自洽，但本次未能取得公安部 2026 年 1 月通稿原文，属'待补一手原文'而非'已核实'。'28.6%'精确到小数点，却没有任何机构发布过驾培产能利用率——该指标需要'教练车/教练员/单车年培训能力'作为分母，官方统计中不存在，高度可疑。旁证方向成立：A 股唯一驾培主业公司 ST 东时（603377）2025 年营收 6.18 亿元、同比 -23.47%，净利 -7.45 亿元，已被实施风险警示。","source":"公安部交通管理局（年度机动车与驾驶人数据）；交通运输部《交通运输行业发展统计公报》"},{"id":"C05","industry":"售电（电力零售）","claim":"广西 1-8 月亏损 >20 亿、全年预计 >50 亿；广东亏损面 59.6%；2025 年 >3200 家退出、退市率近 60%","actual":"三项均未能对上任何一手披露：广西电力交易中心按月/按年发布市场运营分析，但 2026 年 1-8 月的售电公司盈亏汇总未公开发布；广东电力交易中心零售市场亏损面为季度指标，未检索到 59.6% 的对应期次；全国售电公司无'退出/退市率'统一统计，各交易中心公告的是'暂停交易资格''强制退出目录'，与工商注销是不同口径","verdict":"无法核实","note":"方向大概率成立——2025-2026 年售电侧因价差收窄、偏差考核、现货价格波动出现大面积亏损，中小售电公司批量退出是行业共识；但三组精确数字（20 亿/59.6%/3200 家与 60%）均无一手出处，且'退市率近 60%'存在口径错误：把'暂停交易资格'（可恢复）与'注销退出'（不可恢复）混为一谈。若全国售电公司存量约 5000-6000 家，3200 家退出即意味着过半，量级本身需要独立核验。","source":"广西电力交易中心 / 广东电力交易中心 / 中国电力企业联合会"},{"id":"C13","industry":"集邮","claim":"2300 万（或 3000 万）→300 万；在册会员 112 万","actual":"中华全国集邮联合会在册会员长期处于百万量级（第八次全国代表大会前后约 110 万），112 万与之量级一致但未取得原文；'2300 万/3000 万玩家'与'300 万玩家'在任何官方统计中均不存在——中国邮政与集邮联从未发布'活跃集邮玩家'口径","verdict":"无法核实","note":"无原始出处。112 万'在册会员'是可查量级（集邮联自报），但'玩家数'属自造口径：把某年邮票预订户数、某次活动参与人数或某省调查推算当成全国玩家总数，都会得到千万级数字。行业萎缩方向有旁证：中国邮政 2026 年仍在推进'集邮业务库存压降'（chinapost.com.cn 集邮报道栏目 2026-09-30 稿），新邮打折、预订户流失是长期现象。","source":"中华全国集邮联合会；中国邮政集团有限公司（集邮报道栏目）"},{"id":"C27","industry":"宠物","claim":"犬猫数量增速 1.8%；2026Q3 上市宠企利润集体暴跌","actual":"2026 年三季报（1-9 月累计）：乖宝宠物营收 51.25 亿元（+8.17%）、归母净利 2.14 亿元（-58.35%）；中宠股份营收 48.58 亿元（+25.86%）、净利 1.80 亿元（-45.86%）；佩蒂股份营收 10.95 亿元（+0.53%）、净利 0.26 亿元（-77.47%）——利润端'集体暴跌'成立，幅度 -45.9%~-77.5%。数量增速 1.8% 未能取得《中国宠物行业白皮书》原文","verdict":"部分证实","note":"后半句是本次核验中证据最硬的一条（B 级：交易所披露口径）；但三家营收全部正增长，属'增收不增利'，原因是鸡肉等原料涨价、销售费用投放加大与汇率，而非'没人养宠物了'。答主把利润下滑叙述成行业崩盘，方向偏差明显。前半句 1.8% 与白皮书历年'增速放缓至个位数'的趋势一致，但未取得原文，标注为待核。","source":"乖宝宠物(301498)/中宠股份(002891)/佩蒂股份(300673) 2026 年三季报；《中国宠物行业白皮书》"},{"id":"C04","industry":"建筑施工（央国企）","claim":"营收 -5.76%；利润 -15% / -17.91%；裁员 30%（网传）；人才池按最低工资","actual":"中国建筑 2025 年营收 20821.42 亿元（-4.81%）、归母净利 390.69 亿元（-15.40%）；中国中铁 2025 年营收 10934.94 亿元（-5.76%）、归母净利 228.92 亿元（-17.91%）。即 -5.76% 只属于中铁，中建为 -4.81%；两个利润降幅分别对应中建 -15.40%、中铁 -17.91%。'裁员 30%'与'人才池按最低工资'无任何公开披露","verdict":"部分证实","note":"财务口径全部对得上，但归属被答主并成一句造成张冠李戴：-5.76% 是中国中铁，中建是 -4.81%（营收 2.08 万亿、净利 390.69 亿、EPS 0.94，公告日 2026-04-18；中铁公告日 2026-03-31）。'裁员 30%'属未证实传闻，两家年报未披露该幅度的人员裁减；'人才池按最低工资发'是社交媒体上的项目层面个案，无公开出处，不得作为行业事实引用。","source":"中国建筑(601668)/中国中铁(601390) 2025 年年度报告（东方财富数据中心年报数据接口，原始披露为交易所/巨潮）"},{"id":"C46","industry":"贷款中介（小额贷款公司）","claim":"30 家 → 仅剩平安普惠；月放款 1 亿+ → 3000 万","actual":"湖南省地方金融管理局按年公示小贷公司名单，长沙市在营小贷公司数量近年确有压降，但截至 2025-2026 年仍为数十家量级，'仅剩平安普惠'不成立（平安普惠为全国性融资担保/助贷机构，并非长沙市批准设立的小额贷款公司）；'月放款 1 亿+→3000 万'为单一机构经营数据，无公开披露","verdict":"无法核实","note":"属个案机构口径，不能推及行业。'仅剩平安普惠'存在明显事实错误——长沙仍有地方金融管理局批准设立的小贷公司在营，且平安普惠的业务主体不是小贷牌照。月放款额属企业内部数据，除非受访者本人披露，否则不可核验。","source":"湖南省地方金融管理局（小贷公司名单公示）；媒体个案报道"},{"id":"C36","industry":"考公考研培训","claim":"国考 371.8 万人、98:1；中公 -19.41%、待退费 4.8 亿；粉笔 26.77 亿、-4.1%","actual":"2026 年度国考：371.8 万人通过资格审查、报录比约 98:1（国家公务员局 2025 年 10 月发布）；中公教育 2025 年营收 22.37 亿元（-14.84%）、归母净利 0.49 亿元（-73.38%），-19.41% 未能在合并报表复现（疑为公务员序列分部口径）；粉笔 2025 年营收 26.77 亿元（-4.06%）、净利 1.98 亿元（-17.30%）","verdict":"部分证实","note":"粉笔两项数字（26.77 亿、-4.06%）与年报完全吻合，是本条最硬的部分；国考 371.8 万/98:1 与国家公务员局发布口径一致（官网正文为 JS 渲染，本次未抓到原文，列为待补）。中公'公务员培训营收 -19.41%'与合并口径 -14.84% 不符，需分部数据才能确认，属口径存疑而非直接证伪。'待退学费 4.8 亿'未在 2025 年报核对到，但中公 2021-2023 年退费危机中待退金额曾在数亿元量级，量级可信、数值待核。2026 年中报显示粉笔营收 12.48 亿元（-16.33%）、净利 -1.83 亿元，行业 2026 年确实在加速恶化。","source":"国家公务员局；中公教育(002607)/粉笔(02469.HK) 2025 年年度报告"},{"id":"C30","industry":"二手相机","claim":"5D2 1500→500-600；a7s 2000-3000→800-900；千元以下全画幅 >10 款","actual":"无可复现数据源。闲鱼/转转等二手平台不提供公开的历史成交价 API，也无第三方机构编制相机二手价格指数；媒体无系统性行情记录，无法回溯答主发帖时点的挂牌价分布","verdict":"无法核实","note":"仅个人观测。单机价格受成色、快门数、配件、地区影响，同型号挂价可相差数倍，'1500→五六百'这类表述本质是区间对区间，无法证伪也无法证实。'千元以下全画幅超十款'倒是可验证的命题（在售机型计数），但缺少平台、时点与'全画幅'判定口径（是否含故障机、机身仅存），仍不可复现。方向上：单反与早期微单的残值确实在快速下台阶，属可观察的产业事实。","source":"无（二手交易平台行情，属个人观测）"},{"id":"C19","industry":"加密货币","claim":"加密总市值 < 0.5 × 英伟达市值","actual":"2026-11-09：全球加密总市值 2.467 万亿美元（coinlore 全币种口径，14993 个币种，BTC 占比 60.13%，BTC 1.493 万亿美元）；英伟达市值 4.506 万亿美元（186.64 美元/股）。比值 = 2.467/4.506 = 54.7%，高于一半","verdict":"部分证实","note":"'加密总市值显著低于英伟达'的量级判断成立，但'不到一半'在核验时点不成立（54.7%）。这是一个随时间漂移的比值：2025 年末英伟达 4.638 万亿美元、BTC 高位时加密总市值一度接近 3 万亿美元，比值会在 40%-70% 之间反复穿越 50%。因此该断言必须以'某日某时'为前提，答主未给日期，属不可判定的时点比较；若按 2026-11-09 计，应表述为'约为英伟达的 55%'。","source":"CoinLore 全球市场 API；CompaniesMarketCap（英伟达市值）"},{"id":"C38","industry":"标准化中间岗位（客服/写作翻译/教育内容）","claim":"9000→5000；需求 -20%~-50%；市值 -99%","actual":"Chegg：2026-11 市值 0.678 亿美元 vs 2020 年峰值 116.3 亿美元，跌幅 99.4%（历史：2023 年 13.1 亿、2024 年 1.6 亿、2025 年 1.0 亿美元）；Salesforce 客服团队由 9000 人降至 5000 人系 CEO Marc Benioff 2025 年 9 月公开表述（因 Agentforce 承接约一半会话），公司未在财报中单列该人数；Upwork 不公开分品类需求指数，-20%~-50% 无出处","verdict":"部分证实","note":"Chegg -99.4% 属实且是极少数可以用公开行情完整复现的断言（B 级）。Salesforce 9000→5000 有 CEO 公开表态支撑，但属公司自述、无审计口径，且未区分'转岗/自然减员/裁员'，只能算 C 级。'写作翻译需求下降 20%-50%'没有任何可查数据源——Upwork 不发布品类需求指数，第三方追踪（如 Upwork 岗位抓取）也未见系统记录，属典型'精确区间 + 无出处'，应视为答主估计。","source":"CompaniesMarketCap（Chegg）；Salesforce 高管公开表态；Upwork（无公开数据）"}],"verify_counts":{"证实":17,"证伪":2,"部分证实":9,"无法核实":6},"reverse":[{"industry":"二手车","direction":"量增价减","verdict":"夸大","volume":"全国二手车累计交易量（万辆，中国汽车流通协会）","volume_data":"2019 1492.28；2020 1434.08；2021 1758.51（+22.62%）；2022 1602.78；2023 1841.33（+14.88%）；2024 1961.42（+6.52%）；2025 2010.80（+2.52%），首破 2000 万，历史新高","price":"二手车成交均价（万元/辆）","price_data":"2024 交易额 12852.05 亿元，均价约 6.55 万元/辆；2025 交易额未公布，按 6.3–6.4 万元估算（约 -2%~-4%，估算值，非官方）","note":"2019→2025 交易量 +34.7%，2025 年创新高；价格战真实存在，但'崩盘'与'历史新高'同时发生"},{"industry":"汽车","direction":"量增价减","verdict":"夸大","volume":"汽车产量/销量（万辆，中汽协）","volume_data":"2023 产 3016.1 / 销 3009.4；2024 产 3128.2 / 销 3143.6（+3.7%/+4.5%）；2025 产 3453.1 / 销 3440.0（约 +10.4%/+9.4%），连续 17 年全球第一","price":"汽车制造业利润率（统计局口径）","price_data":"2025 行业收入 111796 亿元、利润 4610 亿元（+0.6%），利润率 4.1%（低于下游工业平均 5.9%）；2017 年约 8%；2025 年 12 月单月利润 207 亿元、-57.4%","note":"量增价减的教科书案例：产销双超 3400 万辆，利润率从 8% 砍到 4.1%，利润被价格战吃掉而非需求消失"},{"industry":"白酒","direction":"2016–2024 量降价升；2025 转量价齐跌","verdict":"部分正确","volume":"白酒产量（万千升，折 65 度商品量，统计局）","volume_data":"2016 1358.4；2017 起规上口径调整；2024 414.5；2025 354.9（-12.1%，9 连降，累计 -73.9%）","price":"行业销售收入与利润（中国酒业协会，规上企业）","price_data":"2016 收入 6125.74 亿元（+10.07%）、利润 797.15 亿元；2024 989 家规上收入 7963.84 亿元、利润 2508.65 亿元；2025 892 家规上收入 -7.5%、利润 -13.1%","note":"缩量提价持续 8 年（产量 -69.5%，收入 +30%，利润 +215%），2025 年才首次量价齐跌，'崩'的时点被提前了约 3 年"},{"industry":"餐饮","direction":"量增（增速三连降）、价减","verdict":"夸大","volume":"全国餐饮收入（亿元，统计局）","volume_data":"2023 52890（+20.4%）；2024 55718（+5.3%，限额以上 15298 亿元 +3.0%）；2025 57982（+3.2%，低于社零 +3.7%）","price":"全国餐饮客单价与行业利润率","price_data":"未找到公开官方数据；代理指标：限上增速（2024 +3.0%）低于整体（+5.3%），高端承压","note":"三年均为正增长且 2025 年绝对额创新高；'崩盘'实际是增速从 20.4% 降到 3.2% 的斜率问题"},{"industry":"宠物","direction":"量价齐升","verdict":"说反","volume":"城镇犬猫数量与宠物消费市场规模（《中国宠物行业白皮书》）","volume_data":"2025 城镇犬猫 1.26 亿只（+1.8%；犬 5343 万只 +1.6%、猫 7289 万只）；2025 消费市场 3126 亿元（+4.1%；犬 1606 亿 +3.2%、猫 1520 亿）；2024 市场 3002 亿元（+7.5%）","price":"单只年均消费（元/只）","price_data":"2025 约 2481 元（3126 亿÷1.26 亿只），2024 约 2425 元，+2.3%（估算）；上市宠企利润分化，非全行业普跌","note":"1.8% 是正增长而非负增长；规模 +4.1%、单只消费 +2.3%，量价同向上升，是本清单唯一方向完全相反的一条"},{"industry":"电商","direction":"量增、价减","verdict":"夸大","volume":"全国网上零售额（亿元，统计局）","volume_data":"2023 154264（+11.0%）；2024 155225（+7.2%）；2025 159722（+8.6%，公报可比口径；按绝对额仅 +2.9%），高于社零 +3.7%","price":"行业利润率与单均价","price_data":"未找到公开官方数据；代理指标：快递单票收入连年下降（价格战）","note":"2025 年增速 8.6% 仍高于社零，绝对额创新高；'见顶'与'增速回升'矛盾"},{"industry":"保险","direction":"量增价减","verdict":"夸大","volume":"原保险保费收入（亿元，金融监管总局）","volume_data":"2023 5.12 万亿（+9.1%）；2024 5.7 万亿（+5.7%）；2025 61194 亿元（+7.4%；寿险 35557 亿、健康+意外 10935 亿、财产险 14703 亿）","price":"预定利率与新单价值率","price_data":"2023–2025 预定利率连续下调 3.5%→3.0%→2.5%→2.0%，新单价值率承压；2025 赔付给付 24432 亿元","note":"代理人流失是渠道（人海模式）收缩，保费仍 +7.4%；渠道减员≠行业缩量"},{"industry":"旅游","direction":"总量量增价减；旅行社家数增、单社价崩（结构转移）","verdict":"部分正确","volume":"国内出游人次与入境游客（文旅部）；旅行社数量","volume_data":"国内出游 2023 48.9 亿（+93.3%）；2024 56.15 亿（+14.8%）；2025 65.2 亿（+16.2%）；入境 15450 万人次（+17.1%）；旅行社 2019 38943 家 → 2024 6.4 万家","price":"出游总花费、客单价、旅行社单社营收","price_data":"出游总花费 2025 63003 亿元（+9.5%）；客单价 2024 1024 元 → 2025 966 元（-5.6%）；旅行社营收 2019 7103.38 亿 → 2024 5657.7 亿（+27.3%），单社 1824 万 → 884 万元（-51.5%）","note":"答主自我限定为'结构转移'，方向最准；但若读成'旅游崩了'则错——人次 +16.2%、旅行社总数反增 64%"},{"industry":"酒店","direction":"量增价减","verdict":"基本正确","volume":"连锁酒店客房数与门店数（中国饭店协会）","volume_data":"2024 年底 707 万间（+4.68%）、9.33 万家；2025 年底 783 万间（+10.74%）、10.63 万家，供给加速","price":"RevPAR（每间可售房收入）","price_data":"2024 全国 -6%；2025 全国 -3%（瑞银）；华住 2025 年 1–5 月同比最大降幅 13%；洲际中国区 2025 全年 -1.6%","note":"供给增、单房收益跌的方向都说对了；仅'全方位'略夸大（全国 -3% vs 单体 -13%）"},{"industry":"电影/真人影视","direction":"长期（vs 2019）量降价升；2025 单年量价齐升","verdict":"部分正确","volume":"全国电影票房与观影人次（国家电影局）","volume_data":"2023 549.15 亿元/12.99 亿人次；2024 425.02 亿元/10.1 亿人次；2025 518.32 亿元/12.38 亿人次（同比 +21.9%/+22.6%）","price":"平均票价（元/张）","price_data":"2019 约 37.2 元 → 2025 约 41.9 元（+12.5%）；较 2019 峰值 642.66 亿元/17.27 亿人次：票房 -19.3%、人次 -28.3%","note":"人次确实较峰值 -28.3%，但票价 +12.5%、2025 年双指标反弹 20%+；'影院空场'与 12.38 亿人次不符"},{"industry":"高等教育/考研","direction":"量降价升（报名降、招生升，两条量反向）","verdict":"部分正确","volume":"考研报名人数；研究生招生数（教育部）","volume_data":"报名 2023 474 万 → 2024 438 万 → 2025 388 万 → 2026 343 万（三年 -27.6%）；招生 2023 130.17 万（+4.76%）→ 2024 135.7 万 → 2025 143.85 万（+10.5%；博士 20.16、硕士 123.68 万），在学 429.95 万，毛入学率 61.30%","price":"学历溢价；培训客单价","price_data":"学历溢价无官方价格口径；培训端中公营收 -19.41%、粉笔 26.77 亿元（-4.1%）","note":"报名确在降（且'创新高'与数据相反，峰值是 2023 年 474 万），但招生同期 +10.5%，'高等教育崩了'不成立"},{"industry":"幼儿园/母婴（对照组）","direction":"量价齐跌","verdict":"基本正确","volume":"幼儿园所数、在园幼儿数（教育部）；出生人口（统计局）","volume_data":"幼儿园 2021 29.48 万所 → 2023 27.44 万 → 2024 25.33 万 → 2025 23.19 万所（-21.3%）；在园幼儿 2021 4805.2 万 → 2025 3225.52 万（-32.9%）；出生人口 2016 1786 万 → 2023 902 万 → 2024 954 万 → 2025 792 万","price":"办园结构与收费","price_data":"2025 民办园 12.08 万所（占 52.10%）、普惠性 20.31 万所（占 87.57%），价格被普惠压制；全国幼儿园收费未找到公开官方口径","note":"数量真塌陷：在园幼儿 -32.9%、园所 -21.3%、出生 792 万；对照组证明真崩盘在官方数据里看得见"}],"reverse_counts":{"夸大":5,"部分正确":4,"说反":1,"基本正确":2}}</script>
+<script>
+(function(){
+"use strict";
+
+var DATA = JSON.parse(document.getElementById('data').textContent);
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+var esc = function(v){
+  return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+};
+var fmt = function(n){ return Number(n).toLocaleString('zh-CN'); };
+
+var TYPES = ['量塌陷','价塌陷','供给出清','结构转移'];
+var TYPE_CLASS = {'量塌陷':'c1','价塌陷':'c2','供给出清':'c3','结构转移':'c4'};
+var TYPE_NOTE = {
+  '量塌陷':'需求本身在减少。要救的是需求。',
+  '价塌陷':'量还在，单价或毛利崩了。要救的是内卷。',
+  '供给出清':'门店、机构、从业者在退出。往往是效率提升。',
+  '结构转移':'需求换了载体。根本不用救。'
+};
+var CORDER = ['F 传统零售/线下消费','E AI 冲击白领','B 教育','I 制造/外贸/农业','A 婚育人口链','D 财政/体制','C 地产/基建后周期','H 金融','G 汽车','J 专业服务','Z 医疗','K 泛化判断'];
+var CMETA = {
+  'A 婚育人口链':['A','婚育人口链'],
+  'B 教育':['B','教育'],
+  'C 地产/基建后周期':['C','地产基建'],
+  'D 财政/体制':['D','财政体制'],
+  'F 传统零售/线下消费':['F','传统零售'],
+  'I 制造/外贸/农业':['I','制造外贸'],
+  'E AI 冲击白领':['E','AI 白领'],
+  'G 汽车':['G','汽车'],
+  'J 专业服务':['J','专业服务'],
+  'H 金融':['H','金融'],
+  'Z 医疗':['Z','医疗'],
+  'K 泛化判断':['K','泛化']
+};
+var AVAIL_LABEL = {open:'有官方口径', paid:'仅代理', none:'无口径'};
+var AVAIL_RANK = {open:0, paid:1, none:2};
+var V_ORDER = ['证实','部分证实','证伪','无法核实'];
+var V_CLASS = {'证实':'ok','部分证实':'part','证伪':'bad','无法核实':'unk'};
+var V_RULE = {
+  '证实':'数字与口径都对得上',
+  '部分证实':'方向对，数字或归属有误',
+  '证伪':'与官方口径直接冲突',
+  '无法核实':'当前信源内找不到出处'
+};
+var R_COLOR = {'基本正确':'#2C6E63','部分正确':'#8B857C','夸大':'#1A1815','说反':'#B8402A'};
+var TOTAL = DATA.industries.length;
+
+function clusterInfo(c){
+  var m = CMETA[c];
+  return m ? {code:m[0], short:m[1]} : {code:String(c).slice(0,1), short:String(c).slice(2)};
+}
+
+DATA.industries.forEach(function(x, i){ x.__i = i; });
+
+var state = {
+  activeType: '量塌陷',
+  type: '全部',
+  avail: '全部',
+  cluster: null,
+  sort: {key:'n_answers', dir:'desc'},
+  expanded: new Set()
+};
+
+/* ---------- 02 四种崩法 ---------- */
+var typeBar = $('#type-bar');
+typeBar.innerHTML = TYPES.map(function(t){
+  var n = DATA.types[t] || 0;
+  var p = (n / TOTAL * 100).toFixed(1);
+  return '<button class="seg ' + TYPE_CLASS[t] + '" data-type="' + t + '" style="width:' + p + '%" aria-pressed="' + (t === state.activeType) + '">' +
+    '<span class="seg-n num">' + n + '</span>' +
+    '<span class="seg-t">' + t + '</span>' +
+    '<span class="seg-p num">' + p + '%</span>' +
+    '</button>';
+}).join('');
+
+$('#type-notes').style.gridTemplateColumns = TYPES.map(function(t){ return (DATA.types[t] || 1) + 'fr'; }).join(' ');
+$('#type-notes').innerHTML = TYPES.map(function(t){
+  var n = DATA.types[t] || 0;
+  return '<div class="type-note' + (t === state.activeType ? ' is-active' : '') + '" data-note="' + t + '">' +
+    '<div class="tn-h"><span>' + t + '</span><span class="tn-n num">' + n + '</span></div>' +
+    '<p class="tn-p">' + TYPE_NOTE[t] + '</p></div>';
+}).join('');
+
+function renderFlow(){
+  var list = DATA.industries.filter(function(x){ return x.type === state.activeType; })
+    .sort(function(a,b){ return b.n_answers - a.n_answers || b.votes - a.votes; });
+  $('#flow-title').innerHTML = state.activeType + ' <span>' + list.length + ' 个行业</span>';
+  $('#flow').innerHTML = list.map(function(x){
+    return '<span class="ind">' + esc(x.industry) + '<span class="ind-n num">' + x.n_answers + '</span></span>';
+  }).join('');
+  $$('.seg', typeBar).forEach(function(b){
+    b.setAttribute('aria-pressed', String(b.dataset.type === state.activeType));
+  });
+  $$('.type-note').forEach(function(n){
+    n.classList.toggle('is-active', n.dataset.note === state.activeType);
+  });
+}
+typeBar.addEventListener('click', function(e){
+  var b = e.target.closest('.seg');
+  if(!b) return;
+  state.activeType = b.dataset.type;
+  renderFlow();
+});
+renderFlow();
+
+/* ---------- 03 12 个簇 ---------- */
+var maxCluster = Math.max.apply(null, CORDER.map(function(c){ return DATA.clusters[c] || 0; }));
+$('#cl-list').innerHTML = CORDER.map(function(c){
+  var n = DATA.clusters[c] || 0;
+  var m = clusterInfo(c);
+  return '<button class="cl-row" data-cluster="' + esc(c) + '" aria-pressed="false">' +
+    '<span class="cl-code">' + m.code + '</span>' +
+    '<span class="cl-name">' + esc(m.short) + '</span>' +
+    '<span class="cl-track"><span class="cl-bar" style="width:' + (n / maxCluster * 100).toFixed(1) + '%"></span></span>' +
+    '<span class="cl-n num">' + n + '</span></button>';
+}).join('');
+
+function syncCluster(){
+  var on = state.cluster;
+  $$('.cl-row').forEach(function(r){
+    r.setAttribute('aria-pressed', String(r.dataset.cluster === on));
+  });
+  var chip = $('#cluster-chip');
+  var clear = $('#cluster-clear');
+  var status = $('#cluster-status');
+  if(on){
+    var m = clusterInfo(on);
+    chip.hidden = false;
+    $('#cluster-chip-t').textContent = m.code + ' ' + m.short;
+    status.innerHTML = '当前：<b>' + m.code + ' ' + esc(m.short) + '</b> · ' + (DATA.clusters[on] || 0) + ' 个行业';
+    clear.hidden = false;
+  } else {
+    chip.hidden = true;
+    status.textContent = '当前：未按簇筛选';
+    clear.hidden = true;
+  }
+}
+function scrollToTable(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#table').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+}
+$('#cl-list').addEventListener('click', function(e){
+  var b = e.target.closest('.cl-row');
+  if(!b) return;
+  state.cluster = (state.cluster === b.dataset.cluster) ? null : b.dataset.cluster;
+  syncCluster();
+  renderTable();
+  if(state.cluster) scrollToTable();
+});
+$('#cluster-clear').addEventListener('click', function(){
+  state.cluster = null;
+  syncCluster();
+  renderTable();
+});
+$('#cluster-chip').addEventListener('click', function(){
+  state.cluster = null;
+  syncCluster();
+  renderTable();
+});
+syncCluster();
+
+/* ---------- 04 88 行业表 ---------- */
+function compare(a,b){
+  var k = state.sort.key;
+  var dir = state.sort.dir === 'asc' ? 1 : -1;
+  var r = 0;
+  if(k === 'name') r = a.industry.localeCompare(b.industry, 'zh-Hans-CN');
+  else if(k === 'cluster') r = clusterInfo(a.cluster).code.localeCompare(clusterInfo(b.cluster).code);
+  else if(k === 'type') r = TYPES.indexOf(a.type) - TYPES.indexOf(b.type);
+  else if(k === 'avail') r = AVAIL_RANK[a.avail] - AVAIL_RANK[b.avail];
+  else r = a[k] - b[k];
+  if(r === 0) return (b.votes - a.votes) || a.industry.localeCompare(b.industry, 'zh-Hans-CN');
+  return r * dir;
+}
+function currentRows(){
+  return DATA.industries.filter(function(x){
+    if(state.type !== '全部' && x.type !== state.type) return false;
+    if(state.avail !== '全部' && x.avail !== state.avail) return false;
+    if(state.cluster && x.cluster !== state.cluster) return false;
+    return true;
+  }).sort(compare);
+}
+function dots(n){
+  if(n >= 6) return '<span class="dot-n"><b>' + n + '</b><i aria-hidden="true">●</i></span>';
+  var d = '';
+  for(var i=0;i<n;i++) d += '<i class="dot" aria-hidden="true"></i>';
+  return '<span class="dot-n"><b>' + n + '</b><span class="dots">' + d + '</span></span>';
+}
+function detailHTML(x){
+  return '<div class="detail-inner">' +
+    '<div><p class="dl">作者原话论断</p><p>' + esc(x.claim) + '</p></div>' +
+    '<div><p class="dl">原文引语</p><p class="q">' + esc(x.quote) + '</p></div>' +
+    '<div><p class="dl">首选指标</p><p>' + esc(x.indicator) + '</p></div>' +
+    '<div><p class="dl">反证条件</p><p class="counter">' + esc(x.counter) + '</p></div>' +
+    '</div>';
+}
+function rowHTML(x){
+  var open = state.expanded.has(x.__i);
+  var m = clusterInfo(x.cluster);
+  return '<tr class="i-row' + (open ? ' is-open' : '') + '" data-i="' + x.__i + '">' +
+    '<td class="c-name"><button class="row-toggle" data-toggle="' + x.__i + '" aria-expanded="' + open + '" aria-controls="det-' + x.__i + '">' +
+      '<span class="pm" aria-hidden="true">' + (open ? '−' : '+') + '</span><span>' + esc(x.industry) + '</span></button></td>' +
+    '<td class="c-cl">' + m.code + ' ' + esc(m.short) + '</td>' +
+    '<td class="c-type"><span class="tag">' + esc(x.type) + '</span></td>' +
+    '<td class="c-n">' + dots(x.n_answers) + '</td>' +
+    '<td class="c-votes num">' + fmt(x.votes) + '</td>' +
+    '<td class="c-avail"><span class="badge ' + x.avail + '">' + AVAIL_LABEL[x.avail] + '</span></td>' +
+    '</tr>' +
+    '<tr class="detail-row" id="det-' + x.__i + '"' + (open ? '' : ' hidden') + '><td colspan="6">' + detailHTML(x) + '</td></tr>';
+}
+function cardHTML(x){
+  var open = state.expanded.has(x.__i);
+  var m = clusterInfo(x.cluster);
+  return '<article class="m-card" data-i="' + x.__i + '">' +
+    '<div class="m-top"><h4>' + esc(x.industry) + '</h4><span class="badge ' + x.avail + '">' + AVAIL_LABEL[x.avail] + '</span></div>' +
+    '<div class="m-meta">' + m.code + ' ' + esc(m.short) + ' · ' + esc(x.type) + ' · ' + x.n_answers + ' 个回答 · ' + fmt(x.votes) + ' 赞</div>' +
+    '<button class="m-toggle" data-toggle="' + x.__i + '" aria-expanded="' + open + '" aria-controls="mdet-' + x.__i + '">' +
+      '<span class="tlabel">' + (open ? '收起论断' : '展开论断') + '</span><span class="pm" aria-hidden="true">' + (open ? '−' : '+') + '</span></button>' +
+    '<div class="m-detail" id="mdet-' + x.__i + '"' + (open ? '' : ' hidden') + '>' +
+      '<p class="dl">作者原话论断</p><p>' + esc(x.claim) + '</p>' +
+      '<p class="dl">原文引语</p><p class="q">' + esc(x.quote) + '</p>' +
+      '<p class="dl">首选指标</p><p>' + esc(x.indicator) + '</p>' +
+      '<p class="dl">反证条件</p><p>' + esc(x.counter) + '</p>' +
+    '</div></article>';
+}
+function syncChips(){
+  $$('.chip[data-f]').forEach(function(b){
+    b.setAttribute('aria-pressed', String(state[b.dataset.f] === b.dataset.v));
+  });
+}
+function syncSort(){
+  $$('thead th').forEach(function(th){
+    var active = th.dataset.key === state.sort.key;
+    th.setAttribute('aria-sort', active ? (state.sort.dir === 'asc' ? 'ascending' : 'descending') : 'none');
+    var ar = th.querySelector('.ar');
+    if(ar) ar.textContent = active ? (state.sort.dir === 'asc' ? '↑' : '↓') : '';
+  });
+}
+function renderTable(){
+  var rows = currentRows();
+  var tbody = $('#tbody');
+  var cards = $('#cards');
+  if(rows.length){
+    tbody.innerHTML = rows.map(rowHTML).join('');
+    cards.innerHTML = rows.map(cardHTML).join('');
+  } else {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">没有同时满足这些条件的行业。试试取消一个筛选。</td></tr>';
+    cards.innerHTML = '<p class="empty">没有同时满足这些条件的行业。试试取消一个筛选。</p>';
+  }
+  $('#shown-a').textContent = rows.length;
+  $('#shown-b').textContent = rows.length;
+  syncChips();
+  syncSort();
+}
+$('#filters').addEventListener('click', function(e){
+  var b = e.target.closest('.chip[data-f]');
+  if(!b) return;
+  state[b.dataset.f] = b.dataset.v;
+  renderTable();
+});
+$('#tbody').addEventListener('click', function(e){
+  var tr = e.target.closest('tr.i-row');
+  if(!tr) return;
+  toggleRow(Number(tr.dataset.i));
+});
+$('#cards').addEventListener('click', function(e){
+  var b = e.target.closest('[data-toggle]');
+  if(!b) return;
+  toggleRow(Number(b.dataset.toggle));
+});
+function toggleRow(i){
+  var open = state.expanded.has(i);
+  if(open) state.expanded.delete(i); else state.expanded.add(i);
+  var next = !open;
+  $$('[data-toggle="' + i + '"]').forEach(function(b){
+    b.setAttribute('aria-expanded', String(next));
+    var pm = b.querySelector('.pm');
+    if(pm) pm.textContent = next ? '−' : '+';
+    var label = b.querySelector('.tlabel');
+    if(label) label.textContent = next ? '收起论断' : '展开论断';
+  });
+  var det = document.getElementById('det-' + i);
+  if(det) det.hidden = !next;
+  var mdet = document.getElementById('mdet-' + i);
+  if(mdet) mdet.hidden = !next;
+  var tr = document.querySelector('tr.i-row[data-i="' + i + '"]');
+  if(tr) tr.classList.toggle('is-open', next);
+}
+$$('.sort').forEach(function(b){
+  b.addEventListener('click', function(){
+    var k = b.dataset.key;
+    if(state.sort.key === k){
+      state.sort.dir = state.sort.dir === 'asc' ? 'desc' : 'asc';
+    } else {
+      state.sort.key = k;
+      state.sort.dir = (k === 'name' || k === 'cluster') ? 'asc' : 'desc';
+    }
+    renderTable();
+  });
+});
+
+/* ---------- 05 34 条核验 ---------- */
+$('#vcounts').innerHTML = V_ORDER.map(function(v){
+  var n = DATA.verify.filter(function(x){ return x.verdict === v; }).length;
+  var cls = v === '证实' ? 'ok' : v === '部分证实' ? 'part' : v === '证伪' ? 'bad' : 'unk';
+  var p = Math.round(n / DATA.verify.length * 100);
+  return '<div class="vc v-' + cls + '"><span class="vc-n num">' + n + '</span>' +
+    '<span class="vc-l">' + v + '</span><span class="vc-p num">' + p + '%</span></div>';
+}).join('');
+
+$('#vgroups').innerHTML = V_ORDER.map(function(v){
+  var list = DATA.verify.filter(function(x){ return x.verdict === v; });
+  var cls = v === '证实' ? 'g-ok' : v === '部分证实' ? 'g-part' : v === '证伪' ? 'g-bad' : 'g-unk';
+  var items = list.map(function(x){
+    return '<div class="v-row" role="button" tabindex="0" aria-expanded="false" data-v="' + esc(x.id) + '">' +
+      '<span class="v-id">' + esc(x.id) + '</span>' +
+      '<span class="v-ind">' + esc(x.industry) + '</span>' +
+      '<span class="v-claim">' + esc(x.claim) + '</span>' +
+      '<span class="v-actual">' + esc(x.actual) + '</span>' +
+      '<span class="badge ' + V_CLASS[v] + '">' + v + '</span>' +
+      '<span class="v-note"><b>注：</b>' + esc(x.note) + ' <b>来源：</b>' + esc(x.source) + '</span>' +
+      '</div>';
+  }).join('');
+  return '<div class="vgroup ' + cls + '"><div class="vgroup-head"><span class="bar"></span><h3>' + v + '</h3>' +
+    '<span class="n num">' + list.length + '</span><span class="rule">' + V_RULE[v] + '</span></div>' + items + '</div>';
+}).join('');
+
+function toggleVerify(row){
+  var open = row.classList.toggle('open');
+  row.setAttribute('aria-expanded', String(open));
+}
+$('#vgroups').addEventListener('click', function(e){
+  var row = e.target.closest('.v-row');
+  if(row) toggleVerify(row);
+});
+$('#vgroups').addEventListener('keydown', function(e){
+  if(e.key !== 'Enter' && e.key !== ' ') return;
+  var row = e.target.closest('.v-row');
+  if(!row) return;
+  e.preventDefault();
+  toggleVerify(row);
+});
+
+/* ---------- 06 12 个反向验证 ---------- */
+var POS = {
+  '二手车':[568,332,'start',10,4],
+  '汽车':[648,372,'end',-10,5],
+  '白酒':[252,362,'start',10,4],
+  '餐饮':[512,312,'end',-10,4],
+  '宠物':[560,158,'start',12,4],
+  '电商':[612,296,'start',10,4],
+  '保险':[540,416,'start',10,4],
+  '旅游':[452,344,'end',-10,-7],
+  '酒店':[482,396,'start',10,4],
+  '电影/真人影视':[488,205,'end',-12,-8],
+  '高等教育/考研':[302,152,'start',11,4],
+  '幼儿园/母婴（对照组）':[178,428,'start',11,4]
+};
+var LBL = {
+  '二手车':'二手车','汽车':'汽车','白酒':'白酒','餐饮':'餐饮','宠物':'宠物','电商':'电商',
+  '保险':'保险','旅游':'旅游','酒店':'酒店','电影/真人影视':'电影',
+  '高等教育/考研':'考研','幼儿园/母婴（对照组）':'幼儿园/母婴'
+};
+function quadOf(dir){
+  if(/量价齐跌/.test(dir)) return 'bl';
+  if(/量价齐升/.test(dir)) return 'tr';
+  if(/量减|量降|收缩/.test(dir) && /价增|价升|提价/.test(dir)) return 'tl';
+  return 'br';
+}
+function firstSentence(s){
+  var i = String(s).indexOf('。');
+  return i > -1 ? String(s).slice(0, i + 1) : String(s);
+}
+var pts = $('#pts');
+pts.innerHTML = DATA.reverse.map(function(x, i){
+  var p = POS[x.industry] || [400,280,'start',10,4];
+  var color = R_COLOR[x.verdict] || '#1A1815';
+  var q = quadOf(x.direction);
+  var r = x.verdict === '说反' ? 9 : 6.5;
+  var halo = x.verdict === '说反' ? '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="14" fill="none" stroke="' + color + '" stroke-width="1" opacity=".45"></circle>' : '';
+  return '<g class="pt" data-i="' + i + '" data-q="' + q + '" tabindex="0" role="button" aria-label="' +
+      esc(x.industry + '，' + x.direction + '，判定' + x.verdict) + '">' +
+    halo + '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + r + '" fill="' + color + '"></circle>' +
+    '<text x="' + (p[0] + p[3]) + '" y="' + (p[1] + p[4]) + '" text-anchor="' + p[2] + '">' + esc(LBL[x.industry] || x.industry) + '</text>' +
+    '</g>';
+}).join('');
+
+var tt = $('#tt');
+var activeRev = DATA.reverse.findIndex(function(x){ return x.industry === '宠物'; });
+if(activeRev < 0) activeRev = 0;
+
+function showTip(i, ev){
+  var x = DATA.reverse[i];
+  tt.innerHTML = '<strong>' + esc(x.industry) + '</strong><span class="tt-v">' + esc(x.verdict) + '</span>' +
+    '<div class="tt-d">' + esc(x.direction) + '</div>' +
+    '<p>' + esc(firstSentence(x.volume_data).slice(0, 120)) + (firstSentence(x.volume_data).length > 120 ? '…' : '') + '</p>';
+  tt.hidden = false;
+  tt.setAttribute('aria-hidden','false');
+  placeTip(ev);
+}
+function placeTip(ev){
+  var wrap = $('.scatter-wrap');
+  var r = wrap.getBoundingClientRect();
+  var x = ev.clientX - r.left + 16;
+  var y = ev.clientY - r.top + 16;
+  var tw = tt.offsetWidth || 260;
+  var th = tt.offsetHeight || 90;
+  if(x + tw > r.width - 8) x = Math.max(8, ev.clientX - r.left - tw - 16);
+  if(y + th > r.height - 8) y = Math.max(8, ev.clientY - r.top - th - 16);
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+}
+function hideTip(){
+  tt.hidden = true;
+  tt.setAttribute('aria-hidden','true');
+}
+$$('.pt').forEach(function(g){
+  var i = Number(g.dataset.i);
+  g.addEventListener('mouseenter', function(e){ showTip(i, e); });
+  g.addEventListener('mousemove', placeTip);
+  g.addEventListener('mouseleave', hideTip);
+  g.addEventListener('click', function(){ selectReverse(i); });
+  g.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); selectReverse(i); }
+  });
+});
+function selectReverse(i){
+  activeRev = i;
+  $$('.pt').forEach(function(g){ g.classList.toggle('is-active', Number(g.dataset.i) === i); });
+  var x = DATA.reverse[i];
+  var cls = V_CLASS[x.verdict] || 'part';
+  $('#rev-detail').innerHTML =
+    '<div class="rd-left"><p class="rd-ind">' + esc(x.industry) + '</p>' +
+      '<div class="rd-badges"><span class="badge ' + cls + '">' + esc(x.verdict) + '</span></div>' +
+      '<div class="rd-dir">方向：' + esc(x.direction) + '</div>' +
+      '<div class="rd-hint">点击其他圆点切换 · 量价序列均来自官方披露</div></div>' +
+    '<div class="rd-grid">' +
+      '<div><p class="rd-k">量的口径：' + esc(x.volume) + '</p><p class="rd-v">' + esc(x.volume_data) + '</p></div>' +
+      '<div><p class="rd-k">价的口径：' + esc(x.price) + '</p><p class="rd-v">' + esc(x.price_data) + '</p></div>' +
+      '<p class="rd-note"><b>判读：</b>' + esc(x.note) + '</p>' +
+    '</div>';
+}
+selectReverse(activeRev);
+
+/* ---------- init ---------- */
+renderTable();
+})();
+</script>
+
+</body>
+</html>
